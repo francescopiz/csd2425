@@ -1,0 +1,15 @@
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\bin\Debug\net8.0\Landsight.Application.exe
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\bin\Debug\net8.0\Landsight.Application.deps.json
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\bin\Debug\net8.0\Landsight.Application.runtimeconfig.json
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\bin\Debug\net8.0\Landsight.Application.dll
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\bin\Debug\net8.0\Landsight.Application.pdb
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\obj\Debug\net8.0\Landsight.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\obj\Debug\net8.0\Landsight.Application.AssemblyInfoInputs.cache
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\obj\Debug\net8.0\Landsight.Application.AssemblyInfo.cs
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\obj\Debug\net8.0\Landsight.Application.csproj.CoreCompileInputs.cache
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\obj\Debug\net8.0\Landsight.Application.sourcelink.json
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\obj\Debug\net8.0\Landsight.Application.dll
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\obj\Debug\net8.0\refint\Landsight.Application.dll
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\obj\Debug\net8.0\Landsight.Application.pdb
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\obj\Debug\net8.0\Landsight.Application.genruntimeconfig.cache
+C:\Users\Eduardo\source\repos\csd2425\Model\Landsight.Application\obj\Debug\net8.0\ref\Landsight.Application.dll
