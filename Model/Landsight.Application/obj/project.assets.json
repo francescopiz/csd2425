@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Eduardo\\source\\repos\\csd2425\\Model\\Landsight\\Landsight.Model.csproj",
-      "projectName": "Landsight.Model",
-      "projectPath": "C:\\Users\\Eduardo\\source\\repos\\csd2425\\Model\\Landsight\\Landsight.Model.csproj",
+      "projectUniqueName": "C:\\Users\\Eduardo\\source\\repos\\csd2425\\Model\\Landsight.Application\\Landsight.Application.csproj",
+      "projectName": "Landsight.Application",
+      "projectPath": "C:\\Users\\Eduardo\\source\\repos\\csd2425\\Model\\Landsight.Application\\Landsight.Application.csproj",
       "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Eduardo\\source\\repos\\csd2425\\Model\\Landsight\\obj\\",
+      "outputPath": "C:\\Users\\Eduardo\\source\\repos\\csd2425\\Model\\Landsight.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
