@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "YHoTUEJ2T3quCpdk8QPbEfJPVvkMfPyvsxU1AX2SMeg=",
+  "Source": "Landsight.Web",
+  "BasePath": "_content/Landsight.Web",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

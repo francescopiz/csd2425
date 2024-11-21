@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Landsight.Model.Context;
+using Landsight.Model.Repositories;
 namespace Landsight.Model.Extensions
 {
     public static class ServiceExtension
@@ -12,7 +13,9 @@ namespace Landsight.Model.Extensions
             {
                 conf.UseSqlServer(configuration.GetConnectionString("LandsightContext"));
             });
-            //TODO: add repositories.
+            services.AddScoped<PoiRepository>();
+            services.AddScoped<PhotoFileRepository>();
+            services.AddScoped<VideoFileRepository>();
             return services;
         }
     }

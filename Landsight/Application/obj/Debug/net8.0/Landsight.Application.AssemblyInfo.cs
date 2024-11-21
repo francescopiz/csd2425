@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Landsight.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e596d54afb490de63440e1050dd70dac0630951")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+950c81b90d445df37f4fe620b1c4e6fdbd7a5c3d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Landsight.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Landsight.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
