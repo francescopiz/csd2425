@@ -8,7 +8,7 @@ namespace Landsight.Model.Entities
         public string Name { get; set; }
         public long Size { get; set; }
         public byte[] Content { get; set; }
-        public int POIId { get; set; }
+        public int PoiId { get; set; }
         public virtual Poi POI { get; set; }
     }
 }
