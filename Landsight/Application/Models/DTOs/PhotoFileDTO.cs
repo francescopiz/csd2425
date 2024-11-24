@@ -3,12 +3,21 @@ using Landsight.Model.Entities;
 
 namespace Landsight.Application.Models.DTOs
 {
-    public class PhotoFileDTO : GenericDto<PhotoFile>
+    public class PhotoFileDTO : MediaFileDTO, GenericDto<PhotoFile>
     {
 
-        public PhotoFile ToEntity()
+
+        public override PhotoFile ToEntity()
         {
-            return new PhotoFile();
+            return new PhotoFile()
+            {
+                Id = Id,
+                Name = Name,
+                Size = Size,
+                Content = Content,
+                PoiId = PoiId,
+                POI = PoiDTO.ToEntity()
+            };
         }
     }
 }

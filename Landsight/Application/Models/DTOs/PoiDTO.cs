@@ -11,8 +11,18 @@ namespace Landsight.Application.Models.DTOs
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public byte[] AudioDescription { get; set; }
-        public ICollection<>
+        public ICollection<MediaFileDTO> MediaFileDTOs { get; set; }
 
+        public PoiDTO(Poi poi)
+        {
+            PoiId = poi.Id;
+            Name = poi.Name;
+            Description = poi.Description;
+            Latitude = poi.Latitude;
+            Longitude = poi.Longitude;
+            AudioDescription = poi.AudioDescription;
+            MediaFileDTOs = new List<MediaFileDTO>();
+        }
         public Poi ToEntity()
         {
             return new Poi()
@@ -21,8 +31,9 @@ namespace Landsight.Application.Models.DTOs
                 Name = Name,
                 Description = Description,
                 Latitude = Latitude,
-                Longitude = Longitude
-
+                Longitude = Longitude,
+                AudioDescription = AudioDescription,
+                MediaFiles = MediaFileDTOs.Select(m => m.ToEntity()).ToList()
             };
         }
     }
