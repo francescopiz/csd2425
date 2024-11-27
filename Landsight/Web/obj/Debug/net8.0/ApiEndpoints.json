@@ -1,5 +1,15 @@
 [
   {
+    "ContainingType": "Landsight.Web.Controllers.MockPoiController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/MockPoi/Poi/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Web.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",
