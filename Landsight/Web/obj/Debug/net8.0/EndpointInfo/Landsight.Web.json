@@ -1,8 +1,9 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Landsight.Web",
-    "version": "1.0"
+    "title": "Landsight API",
+    "description": "API for Landsight",
+    "version": "v1"
   },
   "paths": {
     "/api/v1/MockPoi/Poi/GetAll": {

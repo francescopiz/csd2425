@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddWebServices()
     .AddSwaggerServices()
+    .AddModelServices(builder.Configuration)
     .AddApplicationServices();
 
 var app = builder.Build();
