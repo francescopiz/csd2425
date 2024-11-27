@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Landsight.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+950c81b90d445df37f4fe620b1c4e6fdbd7a5c3d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+76764aa9c8972b873015b9207d7504143888cd1b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Landsight.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Landsight.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

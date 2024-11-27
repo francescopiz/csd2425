@@ -17,5 +17,10 @@ namespace Landsight.Model.Repositories
             var poi = Get(id);
             if (poi != null) _context.Remove(poi);
         }
+
+        public IEnumerable<Poi> GetPois()
+        {
+            return _context.Pois;
+        }
     }
 }

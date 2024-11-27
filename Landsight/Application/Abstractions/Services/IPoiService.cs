@@ -10,6 +10,6 @@ namespace Landsight.Application.Abstractions.Services
 
         bool DeletePoi(int id);
 
-        IEnumerable<PoiDTO> GetPois(int from, int num);
+        IEnumerable<PoiDTO> GetPois();
     }
 }

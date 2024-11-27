@@ -26,12 +26,20 @@ namespace Landsight.Application.Services
 
         public PoiDTO? GetPoi(int id)
         {
-            throw new NotImplementedException();
+            var poi = _repository.Get(id);
+            if (poi != null) return new PoiDTO(_repository.Get(id));
+            else return null;
         }
 
-        public IEnumerable<PoiDTO> GetPois(int from, int num)
+        public IEnumerable<PoiDTO> GetPois()
         {
-            throw new NotImplementedException();
+            var pois = _repository.GetPois();
+            var poisDto = new List<PoiDTO>();
+            foreach (var poi in pois)
+            {
+                poisDto.Add(new PoiDTO(poi)); 
+            }
+            return poisDto;
         }
     }
 }
