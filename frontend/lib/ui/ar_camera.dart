@@ -16,8 +16,11 @@ class _ArCameraState extends State<ArCamera> {
       appBar: AppBar(
         title: const Text('Fotocamera AR'),
       ),
-      body: const Center(
-        child: Text('inquadra il qrcode per vedere fantasticherie'),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Center(
+          child: Text('inquadra il qrcode per vedere fantasticherie'),
+        ),
       ),
     );
   }
