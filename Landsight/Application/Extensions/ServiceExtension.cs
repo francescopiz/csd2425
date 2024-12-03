@@ -14,6 +14,7 @@ namespace Landsight.Application.Extensions
             services.AddValidatorsFromAssembly(
                 typeof(ServiceExtension).Assembly);
             services.AddScoped<IPoiService, PoiService>();
+            services.AddScoped<IMediaFileService, MediaFileService>();
             return services;
         }
     }

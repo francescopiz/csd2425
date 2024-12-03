@@ -21,7 +21,15 @@ namespace Landsight.Application.Services
 
         public bool DeletePoi(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _repository.Delete(id);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
 
         public PoiDTO? GetPoi(int id)

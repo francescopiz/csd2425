@@ -8,8 +8,6 @@ namespace Landsight.Model.Context
     {
         public DbSet<Poi> Pois { get; set; }
         public DbSet<MediaFile> MediaFiles { get; set; }
-        public DbSet<PhotoFile> PhotoFiles { get; set; }
-        public DbSet<VideoFile> VideoFiles { get; set; }
 
         public LandsightContext() : base() { }
 

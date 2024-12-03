@@ -3,7 +3,7 @@ using Landsight.Model.Entities;
 
 namespace Landsight.Application.Models.DTOs
 {
-    public abstract class MediaFileDTO : GenericDto<MediaFile>
+    public class MediaFileDTO : GenericDto<MediaFile>
     {
         protected int Id { get; set; }
         protected string Name { get; set; }
@@ -12,6 +12,28 @@ namespace Landsight.Application.Models.DTOs
         protected int PoiId { get; set; }
         protected PoiDTO PoiDTO { get; set; }
 
-        public abstract MediaFile ToEntity();
+        public MediaFileDTO(MediaFile mediaFile)
+        {
+            Id = mediaFile.Id;
+            Name = mediaFile.Name;
+            Size = mediaFile.Size;
+            Content = mediaFile.Content;
+            PoiId = mediaFile.PoiId;
+            PoiDTO = new PoiDTO(mediaFile.POI);
+        }
+
+        public MediaFile ToEntity()
+        {
+            return new MediaFile()
+            {
+                Id = Id,
+                Name = Name,
+                Size = Size,
+                Content = Content,
+                PoiId = PoiDTO.PoiId,
+                POI = PoiDTO.ToEntity()
+            };
+        }
+
     }
 }

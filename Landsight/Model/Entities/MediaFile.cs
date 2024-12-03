@@ -2,7 +2,7 @@
 
 namespace Landsight.Model.Entities
 {
-    public abstract class MediaFile
+    public class MediaFile
     {
         public int Id { get; set; }
         public string Name { get; set; }
