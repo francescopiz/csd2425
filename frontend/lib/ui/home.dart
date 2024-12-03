@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/ui/widget/simple_card.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -16,7 +17,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: const Text('Seleziona il tuo tour'),
       ),
-      body: Container(),
+      body: const SimpleCard(title: 'title'),
     );
   }
 }

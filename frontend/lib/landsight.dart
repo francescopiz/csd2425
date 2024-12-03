@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/services/services.dart';
-import 'package:frontend/ui/home.dart';
+import 'package:frontend/ui/widget/custom_bottombar.dart';
 
 import 'bloc/ar_bloc/ar_bloc.dart';
 
@@ -16,6 +16,8 @@ class Landsight extends StatefulWidget {
 class _LandsightState extends State<Landsight> {
   late Services services;
   late String initialRoute;
+
+  var kColorScheme = ColorScheme.fromSeed(seedColor: Colors.deepOrangeAccent);
 
   @override
   void didChangeDependencies() {
@@ -36,7 +38,7 @@ class _LandsightState extends State<Landsight> {
         navigatorKey: services.navigatorKey,
         debugShowCheckedModeBanner: false,
         initialRoute: initialRoute,
-        theme: ThemeData(
+        /*theme: ThemeData(
           //colore sfondo
           scaffoldBackgroundColor: Colors.white70,
           //colore principale
@@ -44,9 +46,12 @@ class _LandsightState extends State<Landsight> {
           //colore secondario
           secondaryHeaderColor: Colors.black12,
           //fontFamily: 'SofiaSansExtraCondensed',
+        ),*/
+        theme: ThemeData.from(
+          colorScheme: kColorScheme,
         ),
         routes: {
-          '/home': (context) => const Home(),
+          '/home': (context) => const CustomBottomBarWidget(),
           //'/onBoardingPage': (context) => const OnboardingPage(),
           //'/settings': (context) => const SettingsScreen(),
         },
