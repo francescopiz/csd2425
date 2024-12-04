@@ -8,7 +8,8 @@ namespace Landsight.Model.Context
     {
         public DbSet<Poi> Pois { get; set; }
         public DbSet<MediaFile> MediaFiles { get; set; }
-
+        public DbSet<Tour> Tours { get; set; }
+        public DbSet<PoiTour> PoiTours { get; set; }
         public LandsightContext() : base() { }
 
         public LandsightContext(DbContextOptions<LandsightContext> options) : base(options) { }

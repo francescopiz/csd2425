@@ -5,12 +5,12 @@ namespace Landsight.Application.Models.DTOs
 {
     public class MediaFileDTO : GenericDto<MediaFile>
     {
-        protected int Id { get; set; }
-        protected string Name { get; set; }
-        protected long Size { get; set; }
-        protected byte[] Content { get; set; }
-        protected int PoiId { get; set; }
-        protected PoiDTO PoiDTO { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public long Size { get; set; }
+        public byte[] Content { get; set; }
+        public int PoiId { get; set; }
+        public PoiDTO PoiDTO { get; set; }
 
         public MediaFileDTO(MediaFile mediaFile)
         {

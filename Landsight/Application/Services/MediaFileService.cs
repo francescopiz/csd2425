@@ -6,7 +6,7 @@ namespace Landsight.Application.Services
 {
     public class MediaFileService : IMediaFileService
     {
-        public readonly MediaFileRepository _repository;
+        private readonly MediaFileRepository _repository;
 
         public MediaFileService(MediaFileRepository repository)
         {

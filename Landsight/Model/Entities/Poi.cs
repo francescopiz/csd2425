@@ -11,5 +11,6 @@ namespace Model.Entities
         public double Longitude { get; set; }
         public byte[] AudioDescription { get; set; }
         public virtual ICollection<MediaFile> MediaFiles { get; set; }
+        public virtual ICollection<PoiTour> PoiTours { get; set; }
     }
 }

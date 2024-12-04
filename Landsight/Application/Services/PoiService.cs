@@ -7,10 +7,12 @@ namespace Landsight.Application.Services
     public class PoiService : IPoiService
     {
         private readonly PoiRepository _repository;
-
-        public PoiService(PoiRepository repository)
+        private readonly PoiTourRepository _poiTourRepository;
+        
+        public PoiService(PoiRepository repository, PoiTourRepository poiTourRepository)
         {
             _repository = repository;
+            _poiTourRepository = poiTourRepository;
         }
         public PoiDTO? AddPoi(PoiDTO poi)
         {
