@@ -52,5 +52,9 @@ namespace Landsight.Application.Services
             }
             return result;
         }
+        public IEnumerable<PoiDTO> GetPoisByTour()
+        {
+            return null; //TODO 
+        }
     }
 }
