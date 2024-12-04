@@ -15,6 +15,7 @@ namespace Landsight.Application.Extensions
                 typeof(ServiceExtension).Assembly);
             services.AddScoped<IPoiService, PoiService>();
             services.AddScoped<IMediaFileService, MediaFileService>();
+            services.AddScoped<ITourService, TourService>();
             return services;
         }
     }

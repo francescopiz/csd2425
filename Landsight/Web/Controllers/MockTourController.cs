@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Landsight.Web.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]/Poi")]
+    [Route("api/v1/[controller]/Tour")]
     public class MocktourController : ControllerBase
     {
         ITourService _service;
@@ -21,10 +21,10 @@ namespace Landsight.Web.Controllers
         }
 
         [HttpGet]
-        [Route("GetPoisByTour")]
-        public IActionResult GetPoisByTour(int id)
+        [Route("GetPois")]
+        public IActionResult GetPois(int tourId)
         {
-            return Ok(); //TODO
+            return Ok(_service.GetPois(tourId));
         }
     }
 }

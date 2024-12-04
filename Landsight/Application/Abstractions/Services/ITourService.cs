@@ -8,5 +8,6 @@ namespace Landsight.Application.Abstractions.Services
         TourDTO? GetTour(int id);
         bool DeleteTour(int id);
         IEnumerable<TourDTO> GetTours();
+        IEnumerable<PoiDTO> GetPois(int tourId);
     }
 }
