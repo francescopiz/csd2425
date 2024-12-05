@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import 'Mediafile.dart';
+
 class Poi {
   final int id;
   final String name;
@@ -7,7 +9,8 @@ class Poi {
   final double latitude;
   final double longitude;
   final List<int> audioDescription;
-  Poi({required this.id, required this.name, required this.description, required this.latitude, required this.longitude, required this.audioDescription});
+  final List <Mediafile> mediafiles;
+  Poi({required this.id, required this.name, required this.description, required this.latitude, required this.longitude, required this.audioDescription, required this.mediafiles});
   factory Poi.fromJson(Map<String, dynamic> json) {
     return Poi(
       id: json['Id'],
@@ -16,6 +19,7 @@ class Poi {
       latitude: json['Latitude'],
       longitude: json['Longitude'],
       audioDescription: json['AudioDescription'],
+      mediafiles: json['Mediafiles'].map<Mediafile>((mediafile) => Mediafile.fromJson(mediafile)).toList(),
     );
   }
   Map<String, dynamic> toJson() {
@@ -26,6 +30,7 @@ class Poi {
       'Latitude': latitude,
       'Longitude': longitude,
       'AudioDescription': audioDescription,
+      'Mediafiles': mediafiles.map((mediafile) => mediafile.toJson()).toList(),
     };
   }
   factory Poi.defaultPoi() {
@@ -36,6 +41,7 @@ class Poi {
       latitude: 0.0,
       longitude: 0.0,
       audioDescription: [],
+      mediafiles: [],
     );
   }
 }
