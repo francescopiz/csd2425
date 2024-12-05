@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/ui/poi_details.dart';
 import 'package:frontend/ui/widget/simple_card.dart';
+
+import '../bloc/tour_bloc/tour_bloc.dart';
+import '../services/tour_service.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,6 +16,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late TourBloc _tourBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _tourBloc = TourBloc(TourService());
+    _tourBloc.add(LoadTours());
+  }
+
+  @override
+  void dispose() {
+    _tourBloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,25 +42,46 @@ class _HomeState extends State<Home> {
                   fontWeight: FontWeight.bold,
                 ))),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            GestureDetector(
-              child: const SimpleCard(title: 'Title POI'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PoiDetails(
-                              title: 'Title POI',
-                              description:
-                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                            )));
-              },
-            ),
-          ],
-        ),
+      body: BlocBuilder<TourBloc, TourState>(
+        bloc: _tourBloc,
+        builder: (context, state) {
+          if (state is TourInitial) {
+            return Center(child: const CircularProgressIndicator());
+          } else if (state is TourError) {
+            return Text('Error: ${state.message}');
+          } else if (state is ToursLoaded) {
+            if (state.tours.isEmpty) {
+              return const Text('No tours available');
+            } else {
+              return ListView.builder(
+                itemCount: state.tours.length,
+                itemBuilder: (context, index) {
+                  final tour = state.tours[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PoiDetails(
+                                  title: tour.pois.first.name,
+                                  description: tour.pois.first.description,
+                                  audioDescription:
+                                      tour.pois.first.audioDescription,
+                                  mediafiles: tour.pois.first.mediafiles,
+                                )),
+                      );
+                    },
+                    child: SimpleCard(
+                      title: tour.name,
+                    ),
+                  );
+                },
+              );
+            }
+          } else {
+            return const Text('Unknown state');
+          }
+        },
       ),
     );
   }

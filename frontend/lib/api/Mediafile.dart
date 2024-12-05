@@ -4,7 +4,7 @@ class Mediafile{
   final String id;
   final String name;
   final String size;
-  final List<ByteData> data;
+  final Uint8List data;
   Mediafile({required this.id, required this.name, required this.size, required this.data});
   factory Mediafile.fromJson(Map<String, dynamic> json) {
     return Mediafile(
@@ -27,7 +27,7 @@ class Mediafile{
       id: '',
       name: '',
       size: '',
-      data: [],
+      data: Uint8List(0),
     );
   }
 }
