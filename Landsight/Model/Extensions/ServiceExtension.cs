@@ -14,8 +14,9 @@ namespace Landsight.Model.Extensions
                 conf.UseSqlServer(configuration.GetConnectionString("LandsightContext"));
             });
             services.AddScoped<PoiRepository>();
-            services.AddScoped<PhotoFileRepository>();
-            services.AddScoped<VideoFileRepository>();
+            services.AddScoped<MediaFileRepository>();
+            services.AddScoped<TourRepository>();
+            services.AddScoped<PoiTourRepository>();
             return services;
         }
     }

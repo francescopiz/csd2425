@@ -1,11 +1,15 @@
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\bin\Debug\net8.0\Landsight.Application.deps.json
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\bin\Debug\net8.0\Landsight.Application.dll
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\bin\Debug\net8.0\Landsight.Application.pdb
+C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\bin\Debug\net8.0\Landsight.Model.dll
+C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\bin\Debug\net8.0\Landsight.Model.pdb
+C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\obj\Debug\net8.0\Landsight.Application.csproj.AssemblyReference.cache
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\obj\Debug\net8.0\Landsight.Application.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\obj\Debug\net8.0\Landsight.Application.AssemblyInfoInputs.cache
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\obj\Debug\net8.0\Landsight.Application.AssemblyInfo.cs
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\obj\Debug\net8.0\Landsight.Application.csproj.CoreCompileInputs.cache
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\obj\Debug\net8.0\Landsight.Application.sourcelink.json
+C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\obj\Debug\net8.0\Landsigh.E7E35F34.Up2Date
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\obj\Debug\net8.0\Landsight.Application.dll
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\obj\Debug\net8.0\refint\Landsight.Application.dll
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Application\obj\Debug\net8.0\Landsight.Application.pdb

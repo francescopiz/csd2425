@@ -17,6 +17,10 @@ namespace Landsight.Model.Configurations
                 .HasMaxLength(50);
             builder.Property(mf => mf.Content)
                 .IsRequired();
+            builder.HasOne(mf => mf.POI)
+                .WithMany(p => p.MediaFiles)
+                .HasForeignKey(mf => mf.PoiId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
