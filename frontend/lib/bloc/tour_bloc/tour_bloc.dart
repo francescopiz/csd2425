@@ -13,12 +13,12 @@ class TourBloc extends Bloc<TourEvent, TourState> {
 
   TourBloc(this.tourService) : super(TourInitial()) {
     on<LoadTours>((event, emit) async {
-      try {
-        final tours = await TourService().getAllTours();
-        emit(ToursLoaded(tours));
+      final tours = await TourService.getAllTours();
+      emit(ToursLoaded(tours));
+      /*try {
       } catch (e) {
         emit(TourError(e.toString()));
-      }
+      }*/
     });
     on<ViewDetails>((event, emit) {
       emit(TourDetails(event.tours, event.currentTourIndex));

@@ -46,6 +46,7 @@ class _HomeState extends State<Home> {
         bloc: _tourBloc,
         builder: (context, state) {
           if (state is TourInitial) {
+            _tourBloc.add(LoadTours());
             return Center(child: const CircularProgressIndicator());
           } else if (state is TourError) {
             return Text('Error: ${state.message}');
@@ -59,6 +60,7 @@ class _HomeState extends State<Home> {
                   final tour = state.tours[index];
                   return GestureDetector(
                     onTap: () {
+                      _tourBloc.add(ViewDetails(state.tours, index));
                       Navigator.push(
                         context,
                         MaterialPageRoute(

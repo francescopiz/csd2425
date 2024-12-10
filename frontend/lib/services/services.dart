@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:frontend/services/tour_service.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 
 class ServicesProvider extends InheritedWidget {
@@ -18,12 +19,14 @@ class Services {
   final RouteObserver<PageRoute> routeObserver;
   final GlobalKey<NavigatorState> navigatorKey;
   final bool isFirstLaunch;
+  final TourService tourService;
 
-  Services(this.routeObserver, this.navigatorKey, this.isFirstLaunch);
+  Services(this.routeObserver, this.navigatorKey, this.isFirstLaunch,
+      this.tourService);
 
   static Services of(BuildContext context) {
     final ServicesProvider? provider =
-    context.dependOnInheritedWidgetOfExactType<ServicesProvider>();
+        context.dependOnInheritedWidgetOfExactType<ServicesProvider>();
     if (provider == null) {
       throw Exception('No ServicesProvider found in context');
     }
@@ -42,7 +45,6 @@ class Services {
     bool isFirstLaunch = prefs.getBool("first_1.0.0") ?? true;
 
     return Services(routeObserver, navigatorKey, isFirstLaunch);*/
-    return Services(routeObserver, navigatorKey, false);
-
+    return Services(routeObserver, navigatorKey, false, TourService());
   }
 }
