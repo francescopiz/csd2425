@@ -5,7 +5,7 @@ import '../api/Mediafile.dart';
 class PoiDetails extends StatefulWidget {
   final String title;
   final String description;
-  final List<int> audioDescription;
+  final List<int>? audioDescription;
   final List<Mediafile> mediafiles;
 
   const PoiDetails(

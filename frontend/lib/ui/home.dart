@@ -46,7 +46,6 @@ class _HomeState extends State<Home> {
         bloc: _tourBloc,
         builder: (context, state) {
           if (state is TourInitial) {
-            _tourBloc.add(LoadTours());
             return Center(child: const CircularProgressIndicator());
           } else if (state is TourError) {
             return Text('Error: ${state.message}');
@@ -69,6 +68,7 @@ class _HomeState extends State<Home> {
                                   description: tour.pois.first.description,
                                   audioDescription:
                                       tour.pois.first.audioDescription,
+
                                   mediafiles: tour.pois.first.mediafiles,
                                 )),
                       );

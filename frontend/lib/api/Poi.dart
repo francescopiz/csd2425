@@ -1,47 +1,47 @@
-import 'package:flutter/foundation.dart';
-
-import 'Mediafile.dart';
+import 'package:frontend/api/Mediafile.dart';
 
 class Poi {
   final int id;
   final String name;
   final String description;
-  final double latitude;
-  final double longitude;
-  final List<int> audioDescription;
-  final List <Mediafile> mediafiles;
-  Poi({required this.id, required this.name, required this.description, required this.latitude, required this.longitude, required this.audioDescription, required this.mediafiles});
+  final double? latitude;
+  final double? longitude;
+  final List<int>? audioDescription;
+  final List<Mediafile> mediafiles;
+
+  Poi({
+    required this.id,
+    required this.name,
+    required this.description,
+    this.latitude,
+    this.longitude,
+    this.audioDescription,
+    required this.mediafiles,
+  });
+
   factory Poi.fromJson(Map<String, dynamic> json) {
     return Poi(
-      id: json['Id'],
-      name: json['Name'],
-      description: json['Description'],
-      latitude: json['Latitude'],
-      longitude: json['Longitude'],
-      audioDescription: json['AudioDescription'],
-      mediafiles: json['Mediafiles'].map<Mediafile>((mediafile) => Mediafile.fromJson(mediafile)).toList(),
+      id: json['poiId'],
+      name: json['name'],
+      description: json['description'],
+      latitude: json['latitude'],
+      longitude: json['longitude'],
+      audioDescription: json['audioDescription']?.cast<int>(),
+      mediafiles: (json['mediaFileDTOs'] as List)
+          .map((mediafile) => Mediafile.fromJson(mediafile))
+          .toList(),
     );
   }
+
   Map<String, dynamic> toJson() {
     return {
-      'Id': id,
-      'Name': name,
-      'Description': description,
-      'Latitude': latitude,
-      'Longitude': longitude,
-      'AudioDescription': audioDescription,
-      'Mediafiles': mediafiles.map((mediafile) => mediafile.toJson()).toList(),
+      'poiId': id,
+      'name': name,
+      'description': description,
+      'latitude': latitude,
+      'longitude': longitude,
+      'audioDescription': audioDescription,
+      'mediaFileDTOs': mediafiles.map((mediafile) => mediafile.toJson()).toList(),
     };
-  }
-  factory Poi.defaultPoi() {
-    return Poi(
-      id: 0,
-      name: '',
-      description: '',
-      latitude: 0.0,
-      longitude: 0.0,
-      audioDescription: [],
-      mediafiles: [],
-    );
   }
 }
