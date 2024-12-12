@@ -8,12 +8,14 @@ namespace Landsight.Application.Models.DTOs
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public ICollection<PoiDTO> Pois { get; set; }
 
         public TourDTO(Tour tour)
         {
             Id = tour.Id;
             Name = tour.Name;
             Description = tour.Description;
+            Pois = new List<PoiDTO>();
         }
 
         public Tour ToEntity()

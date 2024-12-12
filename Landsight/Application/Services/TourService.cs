@@ -45,11 +45,20 @@ namespace Landsight.Application.Services
 
         public IEnumerable<TourDTO> GetTours()
         {
+            var tours = _repository.GetTours();
             var result = new List<TourDTO>();
-            foreach(var tour in _repository.GetTours())
+
+            foreach (var tour in tours)
             {
-                result.Add(new TourDTO(tour));
+                var tourDto = new TourDTO(tour);
+
+                tourDto.Pois = tour.PoiTours
+                    .Select(pt => new PoiDTO(pt.Poi))
+                    .ToList();
+
+                result.Add(tourDto);
             }
+
             return result;
         }
 

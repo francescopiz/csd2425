@@ -1,5 +1,6 @@
 ﻿using Landsight.Model.Context;
 using Landsight.Model.Entities;
+using Microsoft.EntityFrameworkCore;
 using Model.Entities;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,10 @@ namespace Landsight.Model.Repositories
 
         public IEnumerable<Tour> GetTours()
         {
-            return _context.Tours;
+            return _context.Set<Tour>()
+            .Include(t => t.PoiTours)
+            .ThenInclude(pt => pt.Poi)
+            .ToList();
         }
         public IEnumerable<Poi> GetPois(int idTour)
         {
