@@ -1,14 +1,16 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import '../api/Poi.dart';
 import '../api/Tour.dart';
 
 class TourService {
-  static String url = 'https://localhost:7281';
-  static String controllerTour = 'api/v1/MockTour';
-  static String controllerPoi = 'api/v1/MockPoi';
+  String url;
+
+  TourService(this.url);
+
+  static String controllerTour = 'api/v1/Mocktour/Tour';
+  static String controllerPoi = 'api/v1/MockPoi/Poi';
 
   /*static Future<List<Tour>> getAllTours() async {
     final response = await http.get(Uri.http(url, "$controllerTour/GetAll"));

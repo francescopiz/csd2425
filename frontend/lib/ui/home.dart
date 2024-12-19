@@ -4,7 +4,6 @@ import 'package:frontend/ui/poi_details.dart';
 import 'package:frontend/ui/widget/simple_card.dart';
 
 import '../bloc/tour_bloc/tour_bloc.dart';
-import '../services/tour_service.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -21,7 +20,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    _tourBloc = TourBloc(TourService());
+    _tourBloc = BlocProvider.of<TourBloc>(context);
     _tourBloc.add(LoadTours());
   }
 
@@ -53,31 +52,34 @@ class _HomeState extends State<Home> {
             if (state.tours.isEmpty) {
               return const Text('No tours available');
             } else {
-              return ListView.builder(
-                itemCount: state.tours.length,
-                itemBuilder: (context, index) {
-                  final tour = state.tours[index];
-                  return GestureDetector(
-                    onTap: () {
-                      _tourBloc.add(ViewDetails(state.tours, index));
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PoiDetails(
-                                  title: tour.pois.first.name,
-                                  description: tour.pois.first.description,
-                                  audioDescription:
-                                      tour.pois.first.audioDescription,
-
-                                  mediafiles: tour.pois.first.mediafiles,
-                                )),
-                      );
-                    },
-                    child: SimpleCard(
-                      title: tour.name,
-                    ),
-                  );
-                },
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ListView.builder(
+                  itemCount: state.tours.length,
+                  itemBuilder: (context, index) {
+                    final tour = state.tours[index];
+                    return GestureDetector(
+                      onTap: () {
+                        _tourBloc.add(ViewDetails(state.tours, index));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PoiDetails(
+                                    title: tour.pois.first.name,
+                                    description: tour.pois.first.description,
+                                    audioDescription:
+                                        tour.pois.first.audioDescription,
+                                    mediafiles: tour.pois.first.mediafiles,
+                                  )),
+                        );
+                      },
+                      child: SimpleCard(
+                        title: tour.name,
+                        subtitle: tour.description,
+                      ),
+                    );
+                  },
+                ),
               );
             }
           } else {

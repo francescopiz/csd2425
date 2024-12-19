@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/ui/ar_camera.dart';
+import 'package:frontend/ui/debug_screen.dart';
 import 'package:frontend/ui/settings.dart';
 import 'package:frontend/ui/home.dart';
 
@@ -17,7 +18,7 @@ class CustomBottomBarWidgetState extends State<CustomBottomBarWidget> {
   final List<Widget> _actualScreens = [
     const ArCamera(),
     const Home(),
-    const Settings(),
+    const DebugScreen(),
   ];
 
   void _onItemTapped(int index) {

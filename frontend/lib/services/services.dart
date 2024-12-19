@@ -19,7 +19,7 @@ class Services {
   final RouteObserver<PageRoute> routeObserver;
   final GlobalKey<NavigatorState> navigatorKey;
   final bool isFirstLaunch;
-  final TourService tourService;
+  TourService tourService;
 
   Services(this.routeObserver, this.navigatorKey, this.isFirstLaunch,
       this.tourService);
@@ -37,14 +37,13 @@ class Services {
     WidgetsFlutterBinding.ensureInitialized();
 
     var routeObserver = RouteObserver<PageRoute>();
-
     var navigatorKey = GlobalKey<NavigatorState>();
 
-    //controllo se sia la prima volta che l'app viene avviata
-    /*final prefs = await SharedPreferences.getInstance();
+    return Services(routeObserver, navigatorKey, false, TourService(''));
+  }
+}
+//controllo se sia la prima volta che l'app viene avviata
+/*final prefs = await SharedPreferences.getInstance();
     bool isFirstLaunch = prefs.getBool("first_1.0.0") ?? true;
 
     return Services(routeObserver, navigatorKey, isFirstLaunch);*/
-    return Services(routeObserver, navigatorKey, false, TourService());
-  }
-}
