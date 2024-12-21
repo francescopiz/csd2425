@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/ui/ar_camera.dart';
 import 'package:frontend/ui/debug_screen.dart';
-import 'package:frontend/ui/settings.dart';
 import 'package:frontend/ui/home.dart';
 
 class CustomBottomBarWidget extends StatefulWidget {
