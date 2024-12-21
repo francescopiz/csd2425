@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 import '../api/Mediafile.dart';
@@ -5,7 +7,7 @@ import '../api/Mediafile.dart';
 class PoiDetails extends StatefulWidget {
   final String title;
   final String description;
-  final List<int>? audioDescription;
+  final Uint8List? audioDescription;
   final List<Mediafile> mediafiles;
 
   const PoiDetails(
@@ -118,6 +120,16 @@ class _PoiDetailsState extends State<PoiDetails> {
                   ),
                 ],
               ),
+              // After
+              if (widget.audioDescription != null) ...[
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    // Logic to play the audio description
+                  },
+                  child: const Text('Play audio description'),
+                ),
+              ],
               const SizedBox(height: 20),
               Card(
                 child: Text(

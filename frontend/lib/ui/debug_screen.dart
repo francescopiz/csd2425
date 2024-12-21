@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/services/services.dart';
+
+import '../bloc/tour_bloc/tour_bloc.dart';
 
 class DebugScreen extends StatefulWidget {
   const DebugScreen({super.key});
@@ -35,6 +38,7 @@ class _DebugScreenState extends State<DebugScreen> {
                   final url = _urlController.text;
                   if (url.isNotEmpty) {
                     Services.of(context).tourService.url = url;
+                    BlocProvider.of<TourBloc>(context).add(LoadTours());
                   }
                 },
                 child: const Text('Save URL'),

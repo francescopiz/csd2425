@@ -72,6 +72,7 @@ class _HomeState extends State<Home> {
                                     mediafiles: tour.pois.first.mediafiles,
                                   )),
                         );
+                        _tourBloc.add(LoadTours());
                       },
                       child: SimpleCard(
                         title: tour.name,

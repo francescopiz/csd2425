@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:frontend/api/Mediafile.dart';
 
 class Poi {
@@ -6,7 +8,7 @@ class Poi {
   final String description;
   final double? latitude;
   final double? longitude;
-  final List<int>? audioDescription;
+  final Uint8List? audioDescription;
   final List<Mediafile> mediafiles;
 
   Poi({

@@ -38,8 +38,9 @@ class Services {
 
     var routeObserver = RouteObserver<PageRoute>();
     var navigatorKey = GlobalKey<NavigatorState>();
+    var tourService = TourService('');
 
-    return Services(routeObserver, navigatorKey, false, TourService(''));
+    return Services(routeObserver, navigatorKey, false, tourService);
   }
 }
 //controllo se sia la prima volta che l'app viene avviata
