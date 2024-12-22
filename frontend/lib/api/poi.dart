@@ -1,21 +1,21 @@
-import 'package:frontend/api/Mediafile.dart';
+import 'package:frontend/api/mediafile.dart';
 
 class Poi {
-  final int id;
+  final int? id;
   final String name;
   final String description;
-  final double? latitude;
-  final double? longitude;
-  final String audioDescription;
+  final int? latitude;
+  final int? longitude;
+  final String? audioDescription;
   final List<Mediafile> mediafiles;
 
   Poi({
-    required this.id,
+    this.id,
     required this.name,
     required this.description,
     this.latitude,
     this.longitude,
-    required this.audioDescription,
+    this.audioDescription,
     required this.mediafiles,
   });
 

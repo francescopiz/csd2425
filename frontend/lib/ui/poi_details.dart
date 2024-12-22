@@ -1,5 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:frontend/api/Poi.dart';
+import 'package:frontend/api/poi.dart';
 
 class PoiDetails extends StatefulWidget {
   final List<Poi> pois;
@@ -84,7 +86,9 @@ class _PoiDetailsState extends State<PoiDetails> {
                     itemCount: widget.pois[_currentPoiIndex].mediafiles.length,
                     itemBuilder: (context, index) {
                       return Image.memory(
-                          widget.pois[_currentPoiIndex].mediafiles[index].data);
+                        base64Decode(widget
+                            .pois[_currentPoiIndex].mediafiles[index].data),
+                      );
                     },
                   ),
                 ),
@@ -144,7 +148,7 @@ class _PoiDetailsState extends State<PoiDetails> {
               //TODO creare domande dinamiche
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     'Domanda',
                     style: const TextStyle(
                       fontSize: 16.0,
@@ -153,7 +157,7 @@ class _PoiDetailsState extends State<PoiDetails> {
                   ),
                   const SizedBox(height: 10),
                   ListTile(
-                    title: Text('Risposta 1'),
+                    title: const Text('Risposta 1'),
                     leading: Radio(
                       value: 1,
                       groupValue: 0,
@@ -161,7 +165,7 @@ class _PoiDetailsState extends State<PoiDetails> {
                     ),
                   ),
                   ListTile(
-                    title: Text('Risposta 2'),
+                    title: const Text('Risposta 2'),
                     leading: Radio(
                       value: 1,
                       groupValue: 0,
