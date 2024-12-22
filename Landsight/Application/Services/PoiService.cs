@@ -8,11 +8,13 @@ namespace Landsight.Application.Services
     {
         private readonly PoiRepository _repository;
         private readonly PoiTourRepository _poiTourRepository;
-        
-        public PoiService(PoiRepository repository, PoiTourRepository poiTourRepository)
+        private readonly MediaFileRepository _mediaFileRepository;
+
+        public PoiService(PoiRepository repository, PoiTourRepository poiTourRepository, MediaFileRepository mediaFileService)
         {
             _repository = repository;
             _poiTourRepository = poiTourRepository;
+            _mediaFileRepository = mediaFileService;
         }
         public PoiDTO? AddPoi(PoiDTO poi)
         {
@@ -49,7 +51,22 @@ namespace Landsight.Application.Services
             {
                 poisDto.Add(new PoiDTO(poi)); 
             }
+            foreach (var poiDto in poisDto)
+            {
+                poiDto.MediaFileDTOs = GetMediaFilesByPoi(poiDto.PoiId);
+            }
             return poisDto;
+        }
+
+        private ICollection<MediaFileDTO> GetMediaFilesByPoi(int poiId)
+        {
+            var result = new List<MediaFileDTO>();
+            var mediaFiles = _mediaFileRepository.GetMediaFilesByPoi(poiId);
+            foreach (var mediaFile in mediaFiles)
+            {
+                result.Add(new MediaFileDTO(mediaFile));
+            }
+            return result;
         }
     }
 }

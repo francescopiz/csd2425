@@ -25,7 +25,8 @@ namespace Landsight.Model.Repositories
 
         public IEnumerable<MediaFile> GetMediaFilesByPoi(int poiId)
         {
-            return _context.MediaFiles.Where(mf => mf.PoiId == poiId).ToList();
+            var res = _context.MediaFiles.Where(mf => mf.PoiId == poiId);
+            return res.ToList();
         }
     }
 }

@@ -13,10 +13,7 @@ namespace Landsight.Model.Configurations
             builder.Property(mf => mf.Id)
                 .ValueGeneratedOnAdd();
             builder.Property(mf => mf.Name)
-                .IsRequired()
-                .HasMaxLength(50);
-            builder.Property(mf => mf.Content)
-                .IsRequired();
+                .HasMaxLength(100);
             builder.HasOne(mf => mf.POI)
                 .WithMany(p => p.MediaFiles)
                 .HasForeignKey(mf => mf.PoiId)
