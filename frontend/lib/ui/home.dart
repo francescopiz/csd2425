@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/ui/poi_details.dart';
 import 'package:frontend/ui/widget/simple_card.dart';
-import 'dart:convert';
+
 import '../bloc/tour_bloc/tour_bloc.dart';
 
 class Home extends StatefulWidget {
@@ -65,11 +65,8 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => PoiDetails(
-                                    title: tour.pois.first.name,
-                                    description: tour.pois.first.description,
-                                    audioDescription:
-                                        utf8.encode(tour.pois.first.audioDescription),
-                                    mediafiles: tour.pois.first.mediafiles,
+                                    pois: state.tours[index].pois,
+                                    index: 0,
                                   )),
                         );
                         _tourBloc.add(LoadTours());

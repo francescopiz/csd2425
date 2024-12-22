@@ -1,36 +1,26 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-
-import '../api/Mediafile.dart';
+import 'package:frontend/api/Poi.dart';
 
 class PoiDetails extends StatefulWidget {
-  final String title;
-  final String description;
-  final Uint8List? audioDescription;
-  final List<Mediafile> mediafiles;
+  final List<Poi> pois;
+  final int index;
 
-  const PoiDetails(
-      {super.key,
-      required this.title,
-      required this.description,
-      required this.audioDescription,
-      required this.mediafiles});
+  const PoiDetails({super.key, required this.pois, required this.index});
 
   @override
-  State<StatefulWidget> createState() {
-    return _PoiDetailsState();
-  }
+  State<StatefulWidget> createState() => _PoiDetailsState();
 }
 
 class _PoiDetailsState extends State<PoiDetails> {
   late PageController _pageController;
+  late int _currentPoiIndex;
   int _currentPage = 0;
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController();
+    _currentPoiIndex = widget.index;
   }
 
   @override
@@ -40,200 +30,152 @@ class _PoiDetailsState extends State<PoiDetails> {
   }
 
   void _nextPage() {
-    if (_currentPage < widget.mediafiles.length - 1) {
-      _currentPage++;
-      _pageController.animateToPage(
-        _currentPage,
+    if (_currentPage < widget.pois[_currentPoiIndex].mediafiles.length - 1) {
+      _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
+      setState(() => _currentPage++);
     }
   }
 
   void _previousPage() {
     if (_currentPage > 0) {
-      _currentPage--;
-      _pageController.animateToPage(
-        _currentPage,
+      _pageController.previousPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
+      setState(() => _currentPage--);
+    }
+  }
+
+  void _nextPoi() {
+    if (_currentPoiIndex < widget.pois.length - 1) {
+      setState(() {
+        _currentPoiIndex++;
+        _currentPage = 0;
+        _pageController.jumpToPage(_currentPoiIndex);
+      });
+    }
+  }
+
+  void _previousPoi() {
+    if (_currentPoiIndex > 0) {
+      setState(() {
+        _currentPoiIndex--;
+        _currentPage = 0;
+        _pageController.jumpToPage(_currentPoiIndex);
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: Text(widget.pois[_currentPoiIndex].name)),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    child: PageView.builder(
-                      controller: _pageController,
-                      itemCount: widget.mediafiles.length,
-                      itemBuilder: (context, index) {
-                        return Image.memory(widget.mediafiles[index].data);
-                      },
-                    ),
-                  ),
-                  Positioned(
-                    left: 0,
-                    top: MediaQuery.of(context).size.height * 0.15 - 24,
-                    child: IconButton(
-                      icon: const Icon(Icons.arrow_back_ios),
-                      onPressed: _previousPage,
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: MediaQuery.of(context).size.height * 0.15 - 24,
-                    child: IconButton(
-                      icon: const Icon(Icons.arrow_forward_ios),
-                      onPressed: _nextPage,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Logic to navigate to the previous PoiDetails
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: widget.pois[_currentPoiIndex].mediafiles.length,
+                    itemBuilder: (context, index) {
+                      return Image.memory(
+                          widget.pois[_currentPoiIndex].mediafiles[index].data);
                     },
-                    child: const Text('Previous POI'),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Logic to navigate to the next PoiDetails
-                    },
-                    child: const Text('Next POI'),
+                ),
+                Positioned(
+                  left: 0,
+                  top: MediaQuery.of(context).size.height * 0.15 - 24,
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios),
+                    onPressed: _previousPage,
                   ),
-                ],
-              ),
-              // After
-              if (widget.audioDescription != null) ...[
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    // Logic to play the audio description
-                  },
-                  child: const Text('Play audio description'),
+                ),
+                Positioned(
+                  right: 0,
+                  top: MediaQuery.of(context).size.height * 0.15 - 24,
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_forward_ios),
+                    onPressed: _nextPage,
+                  ),
                 ),
               ],
-              const SizedBox(height: 20),
-              Card(
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: _previousPoi,
+                  child: const Text('Previous POI'),
+                ),
+                ElevatedButton(
+                  onPressed: _nextPoi,
+                  child: const Text('Next POI'),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Logic to play the audio description
+              },
+              child: const Text('Play audio description'),
+            ),
+            const SizedBox(height: 20),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  widget.description,
+                  widget.pois[_currentPoiIndex].description,
                   style: const TextStyle(
                     fontSize: 16.0,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-//TODO finisci di implementare con bloc
-
-/*import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../api/Mediafile.dart';
-import '../bloc/poi_details_bloc/poi_details_bloc.dart';
-
-class PoiDetails extends StatelessWidget {
-  final String title;
-  final String description;
-  final List<int> audioDescription;
-  final List<Mediafile> mediafiles;
-
-  const PoiDetails(
-      {super.key,
-        required this.title,
-        required this.description,
-        required this.audioDescription,
-        required this.mediafiles});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => PoiDetailsBloc(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.3,
-                      child: BlocBuilder<PoiDetailsBloc, PoiDetailsState>(
-                        builder: (context, state) {
-                          return PageView.builder(
-                            controller: PageController(initialPage: state.currentPage),
-                            itemCount: mediafiles.length,
-                            itemBuilder: (context, index) {
-                              return Image.memory(mediafiles[index].data);
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                    Positioned(
-                      left: 0,
-                      top: MediaQuery.of(context).size.height * 0.15 - 24,
-                      child: IconButton(
-                        icon: const Icon(Icons.arrow_back_ios),
-                        onPressed: () {
-                          context.read<PoiDetailsBloc>().add(PreviousPageEvent());
-                        },
-                      ),
-                    ),
-                    Positioned(
-                      right: 0,
-                      top: MediaQuery.of(context).size.height * 0.15 - 24,
-                      child: IconButton(
-                        icon: const Icon(Icons.arrow_forward_ios),
-                        onPressed: () {
-                          context.read<PoiDetailsBloc>().add(NextPageEvent());
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Card(
-                  child: Text(
-                    description,
+            ),
+            Card(
+              //TODO creare domande dinamiche
+              child: Column(
+                children: [
+                  Text(
+                    'Domanda',
                     style: const TextStyle(
                       fontSize: 16.0,
                       fontStyle: FontStyle.italic,
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
+                  const SizedBox(height: 10),
+                  ListTile(
+                    title: Text('Risposta 1'),
+                    leading: Radio(
+                      value: 1,
+                      groupValue: 0,
+                      onChanged: (value) {},
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('Risposta 2'),
+                    leading: Radio(
+                      value: 1,
+                      groupValue: 0,
+                      onChanged: (value) {},
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
   }
-}*/
+}
