@@ -31,7 +31,7 @@ class _PoiDetailsState extends State<PoiDetails> {
     super.dispose();
   }
 
-  void _nextImage() {
+  /*void _nextImage() {
     if (_currentImage < widget.pois[_currentPoiIndex].mediafiles.length - 1) {
       setState(() {
         _currentImage++;
@@ -45,7 +45,7 @@ class _PoiDetailsState extends State<PoiDetails> {
         _currentImage--;
       });
     }
-  }
+  }*/
 
   void _nextPoi() {
     if (_currentPoiIndex < widget.pois.length - 1) {
@@ -92,7 +92,7 @@ class _PoiDetailsState extends State<PoiDetails> {
                     },
                   ),
                 ),
-                Positioned(
+                /*Positioned(
                   left: 0,
                   top: MediaQuery.of(context).size.height * 0.15 - 24,
                   child: IconButton(
@@ -107,7 +107,7 @@ class _PoiDetailsState extends State<PoiDetails> {
                     icon: const Icon(Icons.arrow_forward_ios),
                     onPressed: _nextImage,
                   ),
-                ),
+                ),*/
               ],
             ),
             const SizedBox(height: 20),
