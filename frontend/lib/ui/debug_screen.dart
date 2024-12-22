@@ -20,7 +20,11 @@ class _DebugScreenState extends State<DebugScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Debug screen'),
+        title: Text('Debug screen',
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.bold,
+            )),
       ),
       body: Center(
         child: Padding(

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../api/Tour.dart';
+import '../../api/tour.dart';
 import '../../services/tour_service.dart';
 
 part 'tour_event.dart';

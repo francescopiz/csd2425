@@ -1,5 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:frontend/api/Poi.dart';
+import 'package:frontend/api/poi.dart';
 
 class PoiDetails extends StatefulWidget {
   final List<Poi> pois;
@@ -29,7 +31,7 @@ class _PoiDetailsState extends State<PoiDetails> {
     super.dispose();
   }
 
-  void _nextImage() {
+  /*void _nextImage() {
     if (_currentImage < widget.pois[_currentPoiIndex].mediafiles.length - 1) {
       setState(() {
         _currentImage++;
@@ -43,7 +45,7 @@ class _PoiDetailsState extends State<PoiDetails> {
         _currentImage--;
       });
     }
-  }
+  }*/
 
   void _nextPoi() {
     if (_currentPoiIndex < widget.pois.length - 1) {
@@ -84,11 +86,13 @@ class _PoiDetailsState extends State<PoiDetails> {
                     itemCount: widget.pois[_currentPoiIndex].mediafiles.length,
                     itemBuilder: (context, index) {
                       return Image.memory(
-                          widget.pois[_currentPoiIndex].mediafiles[index].data);
+                        base64Decode(widget
+                            .pois[_currentPoiIndex].mediafiles[index].data),
+                      );
                     },
                   ),
                 ),
-                Positioned(
+                /*Positioned(
                   left: 0,
                   top: MediaQuery.of(context).size.height * 0.15 - 24,
                   child: IconButton(
@@ -103,7 +107,7 @@ class _PoiDetailsState extends State<PoiDetails> {
                     icon: const Icon(Icons.arrow_forward_ios),
                     onPressed: _nextImage,
                   ),
-                ),
+                ),*/
               ],
             ),
             const SizedBox(height: 20),
@@ -144,7 +148,7 @@ class _PoiDetailsState extends State<PoiDetails> {
               //TODO creare domande dinamiche
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     'Domanda',
                     style: const TextStyle(
                       fontSize: 16.0,
@@ -153,7 +157,7 @@ class _PoiDetailsState extends State<PoiDetails> {
                   ),
                   const SizedBox(height: 10),
                   ListTile(
-                    title: Text('Risposta 1'),
+                    title: const Text('Risposta 1'),
                     leading: Radio(
                       value: 1,
                       groupValue: 0,
@@ -161,7 +165,7 @@ class _PoiDetailsState extends State<PoiDetails> {
                     ),
                   ),
                   ListTile(
-                    title: Text('Risposta 2'),
+                    title: const Text('Risposta 2'),
                     leading: Radio(
                       value: 1,
                       groupValue: 0,

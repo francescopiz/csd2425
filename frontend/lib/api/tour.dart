@@ -1,13 +1,13 @@
-import 'package:frontend/api/Poi.dart';
+import 'package:frontend/api/poi.dart';
 
 class Tour {
-  final int id;
+  final int? id;
   final String name;
   final String description;
   final List<Poi> pois;
 
   Tour({
-    required this.id,
+    this.id,
     required this.name,
     required this.description,
     required this.pois,
@@ -18,9 +18,7 @@ class Tour {
       id: json['id'],
       name: json['name'],
       description: json['description'],
-      pois: (json['pois'] as List)
-          .map((poi) => Poi.fromJson(poi))
-          .toList(),
+      pois: (json['pois'] as List).map((poi) => Poi.fromJson(poi)).toList(),
     );
   }
 
