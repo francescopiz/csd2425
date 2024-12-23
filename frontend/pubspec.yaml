@@ -63,6 +63,13 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+flutter_icons:
+  android: true
+  ios: true
+  adaptive_icon_background: "#ffffff"    # Background color or drawable
+  adaptive_icon_foreground: "android/app/src/main/res/drawable/ic_launcher_foreground.png"  # Path to your foreground icon image
+  image_path: "assets/icon/icon.png"  # Update with the path to your app icon
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
