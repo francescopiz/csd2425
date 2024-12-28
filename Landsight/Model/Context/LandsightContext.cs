@@ -10,6 +10,7 @@ namespace Landsight.Model.Context
         public DbSet<MediaFile> MediaFiles { get; set; }
         public DbSet<Tour> Tours { get; set; }
         public DbSet<PoiTour> PoiTours { get; set; }
+        public DbSet<Quiz> Quiz { get; set; }
         public LandsightContext() : base() { }
 
         public LandsightContext(DbContextOptions<LandsightContext> options) : base(options) { }

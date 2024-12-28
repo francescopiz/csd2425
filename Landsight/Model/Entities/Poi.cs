@@ -12,5 +12,6 @@ namespace Model.Entities
         public byte[]? AudioDescription { get; set; }
         public virtual ICollection<MediaFile> MediaFiles { get; set; }
         public virtual ICollection<PoiTour> PoiTours { get; set; }
+        public virtual ICollection<Quiz> Quiz { get; set; }
     }
 }

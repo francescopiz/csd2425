@@ -19,7 +19,7 @@ namespace Landsight.Application.Models.DTOs
             Size = mediaFile.Size;
             Content = mediaFile.Content;
             PoiId = mediaFile.PoiId;
-            PoiDTO = new PoiDTO(mediaFile.POI);
+            PoiDTO = null;
         }
 
         public MediaFile ToEntity()

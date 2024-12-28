@@ -17,6 +17,7 @@ namespace Landsight.Model.Extensions
             services.AddScoped<MediaFileRepository>();
             services.AddScoped<TourRepository>();
             services.AddScoped<PoiTourRepository>();
+            services.AddScoped<QuizRepository>();
             return services;
         }
     }

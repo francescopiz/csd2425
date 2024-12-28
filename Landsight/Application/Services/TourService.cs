@@ -8,12 +8,15 @@ namespace Landsight.Application.Services
     {
         private readonly TourRepository _repository;
         private readonly PoiTourRepository _poiTourRepository;
-        //TODO: Implement PoiTour relation (add tours with existing pois, update tables, ...)
+        private readonly MediaFileRepository _mediaFileRepository;
+        private readonly QuizRepository _quizRepository;
 
-        public TourService(TourRepository repository, PoiTourRepository poiTourRepository)
+        public TourService(TourRepository repository, PoiTourRepository poiTourRepository, MediaFileRepository mediaFileRepository, QuizRepository quizRepository)
         {
             _repository = repository;
             _poiTourRepository = poiTourRepository;
+            _mediaFileRepository = mediaFileRepository;
+            _quizRepository = quizRepository;
         }
 
         public TourDTO? AddTour(TourDTO tour)
@@ -51,14 +54,19 @@ namespace Landsight.Application.Services
             foreach (var tour in tours)
             {
                 var tourDto = new TourDTO(tour);
-
                 tourDto.Pois = tour.PoiTours
                     .Select(pt => new PoiDTO(pt.Poi))
                     .ToList();
-
+                foreach (var poi in tourDto.Pois)
+                {
+                    foreach (var mediaFile in _mediaFileRepository.GetMediaFilesByPoi(poi.PoiId))
+                    {
+                        poi.MediaFileDTOs.Add(new MediaFileDTO(mediaFile));
+                    }
+                    poi.QuizDTOs = _quizRepository.GetQuizByPoiId(poi.PoiId).Select(q => new QuizDTO(q)).ToList();
+                }
                 result.Add(tourDto);
             }
-
             return result;
         }
 

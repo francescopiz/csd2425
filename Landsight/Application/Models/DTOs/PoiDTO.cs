@@ -12,6 +12,7 @@ namespace Landsight.Application.Models.DTOs
         public float? Longitude { get; set; }
         public byte[]? AudioDescription { get; set; }
         public ICollection<MediaFileDTO> MediaFileDTOs { get; set; }
+        public ICollection<QuizDTO> QuizDTOs { get; set; }
 
         public PoiDTO(Poi poi)
         {
@@ -22,6 +23,7 @@ namespace Landsight.Application.Models.DTOs
             Longitude = poi.Longitude;
             AudioDescription = poi.AudioDescription;
             MediaFileDTOs = new List<MediaFileDTO>();
+            QuizDTOs = new List<QuizDTO>();
         }
         public Poi ToEntity()
         {
@@ -33,7 +35,8 @@ namespace Landsight.Application.Models.DTOs
                 Latitude = Latitude,
                 Longitude = Longitude,
                 AudioDescription = AudioDescription,
-                MediaFiles = MediaFileDTOs.Select(m => m.ToEntity()).ToList()
+                MediaFiles = MediaFileDTOs.Select(m => m.ToEntity()).ToList(),
+                Quiz = QuizDTOs.Select(q => q.ToEntity()).ToList()
             };
         }
     }
