@@ -1,10 +1,10 @@
 class Quiz{
-  final String? description;
-  final String? answer1;
-  final String? answer2;
+  final String description;
+  final String answer1;
+  final String answer2;
   final String? answer3;
   final String? answer4;
-  final int? answer;
+  final int answer;
 
   Quiz({
     required this.description,

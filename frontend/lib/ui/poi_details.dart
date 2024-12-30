@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:frontend/api/poi.dart';
+import 'package:frontend/ui/widget/quiz_widget.dart';
 
 class PoiDetails extends StatefulWidget {
   final List<Poi> pois;
@@ -150,28 +151,26 @@ class _PoiDetailsState extends State<PoiDetails> {
                 ),
               ),
             ),
-            Card(
-              //TODO creare domande dinamiche
-              child: Column(
-                children: widget.pois[_currentPoiIndex].quiz.map((quiz) {
-                  return Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "htrgfhrfhgft",
-                          style: const TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-
-                    ],
-                  );
-                }).toList(),
-              ),
-            )
+             Card(
+               child:
+                Column(
+                  children: [
+                    ListView.builder(
+                      itemCount: widget.pois[_currentPoiIndex].quiz.length,
+                      itemBuilder: (context, index) {
+                        return QuizWidget(
+                          question: widget.pois[_currentPoiIndex].quiz[index].description,
+                          answer1: widget.pois[_currentPoiIndex].quiz[index].answer1,
+                          answer2: widget.pois[_currentPoiIndex].quiz[index].answer2,
+                          answer3: widget.pois[_currentPoiIndex].quiz[index].answer3,
+                          answer4: widget.pois[_currentPoiIndex].quiz[index].answer4,
+                          correctAnswer: widget.pois[_currentPoiIndex].quiz[index].answer
+                        );
+                      },
+                    ),
+                  ],
+                ),
+             )
           ],
         ),
       ),
