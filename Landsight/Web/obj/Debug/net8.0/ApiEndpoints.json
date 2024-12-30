@@ -10,6 +10,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Landsight.Web.Controllers.MocktourController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/Mocktour/Tour/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Landsight.Web.Controllers.MocktourController",
+    "Method": "GetPois",
+    "RelativePath": "api/v1/Mocktour/Tour/GetPois",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tourId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Web.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

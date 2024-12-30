@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Web\\Landsight.Web.csproj": {}
+    "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Web\\Landsight.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Application\\Landsight.Application.csproj": {
+    "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Application\\Landsight.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Application\\Landsight.Application.csproj",
+        "projectUniqueName": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Application\\Landsight.Application.csproj",
         "projectName": "Landsight.Application",
-        "projectPath": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Application\\Landsight.Application.csproj",
-        "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Application\\obj\\",
+        "projectPath": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Application\\Landsight.Application.csproj",
+        "packagesPath": "C:\\Users\\buzzo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Eduardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\buzzo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Model\\Landsight.Model.csproj": {
-                "projectPath": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Model\\Landsight.Model.csproj"
+              "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Model\\Landsight.Model.csproj": {
+                "projectPath": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Model\\Landsight.Model.csproj"
               }
             }
           }
@@ -47,8 +48,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -79,24 +79,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Model\\Landsight.Model.csproj": {
+    "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Model\\Landsight.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Model\\Landsight.Model.csproj",
+        "projectUniqueName": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Model\\Landsight.Model.csproj",
         "projectName": "Landsight.Model",
-        "projectPath": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Model\\Landsight.Model.csproj",
-        "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Model\\obj\\",
+        "projectPath": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Model\\Landsight.Model.csproj",
+        "packagesPath": "C:\\Users\\buzzo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Eduardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\buzzo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -105,6 +105,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -122,8 +123,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -154,24 +154,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Web\\Landsight.Web.csproj": {
+    "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Web\\Landsight.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Web\\Landsight.Web.csproj",
+        "projectUniqueName": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Web\\Landsight.Web.csproj",
         "projectName": "Landsight.Web",
-        "projectPath": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Web\\Landsight.Web.csproj",
-        "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Web\\obj\\",
+        "projectPath": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Web\\Landsight.Web.csproj",
+        "packagesPath": "C:\\Users\\buzzo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Eduardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\buzzo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -180,14 +180,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Application\\Landsight.Application.csproj": {
-                "projectPath": "C:\\Users\\Eduardo\\OneDrive\\Desktop\\csd2425\\Landsight\\Application\\Landsight.Application.csproj"
+              "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Application\\Landsight.Application.csproj": {
+                "projectPath": "C:\\Users\\buzzo\\OneDrive\\Desktop\\universitaMagistrale\\ComplexSystemDesign\\Progetto\\csd2425\\Landsight\\Application\\Landsight.Application.csproj"
               }
             }
           }
@@ -201,8 +202,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -232,7 +232,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -11,3 +11,16 @@ C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Model\obj\Debug\net8.0\Lands
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Model\obj\Debug\net8.0\refint\Landsight.Model.dll
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Model\obj\Debug\net8.0\Landsight.Model.pdb
 C:\Users\Eduardo\OneDrive\Desktop\csd2425\Landsight\Model\obj\Debug\net8.0\ref\Landsight.Model.dll
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\bin\Debug\net8.0\Landsight.Model.deps.json
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\bin\Debug\net8.0\Landsight.Model.dll
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\bin\Debug\net8.0\Landsight.Model.pdb
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\obj\Debug\net8.0\Landsight.Model.csproj.AssemblyReference.cache
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\obj\Debug\net8.0\Landsight.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\obj\Debug\net8.0\Landsight.Model.AssemblyInfoInputs.cache
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\obj\Debug\net8.0\Landsight.Model.AssemblyInfo.cs
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\obj\Debug\net8.0\Landsight.Model.csproj.CoreCompileInputs.cache
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\obj\Debug\net8.0\Landsight.Model.sourcelink.json
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\obj\Debug\net8.0\Landsight.Model.dll
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\obj\Debug\net8.0\refint\Landsight.Model.dll
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\obj\Debug\net8.0\Landsight.Model.pdb
+C:\Users\buzzo\OneDrive\Desktop\universitaMagistrale\ComplexSystemDesign\Progetto\csd2425\Landsight\Model\obj\Debug\net8.0\ref\Landsight.Model.dll
