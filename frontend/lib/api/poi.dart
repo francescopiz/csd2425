@@ -1,4 +1,5 @@
 import 'package:frontend/api/mediafile.dart';
+import 'package:frontend/api/quiz.dart';
 
 class Poi {
   final int? id;
@@ -8,6 +9,7 @@ class Poi {
   final int? longitude;
   final String? audioDescription;
   final List<Mediafile> mediafiles;
+  final List<Quiz> quiz;
 
   Poi({
     this.id,
@@ -17,6 +19,7 @@ class Poi {
     this.longitude,
     this.audioDescription,
     required this.mediafiles,
+    required this.quiz,
   });
 
   factory Poi.fromJson(Map<String, dynamic> json) {
@@ -30,6 +33,9 @@ class Poi {
       mediafiles: (json['mediaFileDTOs'] as List)
           .map((mediafile) => Mediafile.fromJson(mediafile))
           .toList(),
+      quiz: (json['quizDTOs'] as List)
+          .map((quiz) => Quiz.fromJson(quiz))
+          .toList(),
     );
   }
 
@@ -42,6 +48,7 @@ class Poi {
       'longitude': longitude,
       'audioDescription': audioDescription,
       'mediaFileDTOs': mediafiles.map((mediafile) => mediafile.toJson()).toList(),
+      'quizDTOs': quiz.map((quiz) => quiz.toJson()).toList(),
     };
   }
 }

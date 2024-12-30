@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+
 import 'package:flutter/material.dart';
 import 'package:frontend/api/poi.dart';
 
@@ -68,6 +69,10 @@ class _PoiDetailsState extends State<PoiDetails> {
       });
     }
   }
+  void playSound(){
+    //AudioPlayer audioPlayer = AudioPlayer();
+    //await audioPlayer.play(widget.pois[_currentPoiIndex].audioDescription);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +133,7 @@ class _PoiDetailsState extends State<PoiDetails> {
             ElevatedButton(
               onPressed: () {
                 // Logic to play the audio description
+                playSound();
               },
               child: const Text('Play audio description'),
             ),
@@ -147,32 +153,23 @@ class _PoiDetailsState extends State<PoiDetails> {
             Card(
               //TODO creare domande dinamiche
               child: Column(
-                children: [
-                  const Text(
-                    'Domanda',
-                    style: const TextStyle(
-                      fontSize: 16.0,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  ListTile(
-                    title: const Text('Risposta 1'),
-                    leading: Radio(
-                      value: 1,
-                      groupValue: 0,
-                      onChanged: (value) {},
-                    ),
-                  ),
-                  ListTile(
-                    title: const Text('Risposta 2'),
-                    leading: Radio(
-                      value: 1,
-                      groupValue: 0,
-                      onChanged: (value) {},
-                    ),
-                  ),
-                ],
+                children: widget.pois[_currentPoiIndex].quiz.map((quiz) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "htrgfhrfhgft",
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                    ],
+                  );
+                }).toList(),
               ),
             )
           ],
