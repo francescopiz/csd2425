@@ -1,2 +1,4 @@
 .vs/
-.ddl
+**/*.dll
+**/Debug/**
+**/bin/**

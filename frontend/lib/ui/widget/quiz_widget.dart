@@ -40,19 +40,14 @@ class _QuizWidgetState extends State<QuizWidget> {
           ),
           textAlign: TextAlign.left,
         ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: answers.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(answers[index]),
-                onTap: () {
-                  // Handle answer tap
-                },
-              );
-            },
-          ),
-        ),
+        ...answers.map((answer) {
+          return RadioListTile<int>(
+            title: Text(answer),
+            value: answers.indexOf(answer),
+            groupValue: -1,
+            onChanged: (int? value) {},
+          );
+        }),
       ],
     );
   }

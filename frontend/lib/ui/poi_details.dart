@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-
 import 'package:flutter/material.dart';
 import 'package:frontend/api/poi.dart';
+import 'package:frontend/ui/widget/audio_widget.dart';
 import 'package:frontend/ui/widget/quiz_widget.dart';
 
 class PoiDetails extends StatefulWidget {
@@ -18,7 +18,6 @@ class PoiDetails extends StatefulWidget {
 class _PoiDetailsState extends State<PoiDetails> {
   late PageController _pageController;
   late int _currentPoiIndex;
-  int _currentImage = 0;
 
   @override
   void initState() {
@@ -33,28 +32,10 @@ class _PoiDetailsState extends State<PoiDetails> {
     super.dispose();
   }
 
-  /*void _nextImage() {
-    if (_currentImage < widget.pois[_currentPoiIndex].mediafiles.length - 1) {
-      setState(() {
-        _currentImage++;
-      });
-    }
-  }
-
-  void _previousImage() {
-    if (_currentImage > 0) {
-      setState(() {
-        _currentImage--;
-      });
-    }
-  }*/
-
   void _nextPoi() {
     if (_currentPoiIndex < widget.pois.length - 1) {
       setState(() {
         _currentPoiIndex++;
-        //resetto l'indice dell'immagine
-        _currentImage = 0;
         _pageController.jumpToPage(_currentPoiIndex);
       });
     }
@@ -64,15 +45,9 @@ class _PoiDetailsState extends State<PoiDetails> {
     if (_currentPoiIndex > 0) {
       setState(() {
         _currentPoiIndex--;
-        //resetto l'indice dell'immagine
-        _currentImage = 0;
         _pageController.jumpToPage(_currentPoiIndex);
       });
     }
-  }
-  void playSound(){
-    //AudioPlayer audioPlayer = AudioPlayer();
-    //await audioPlayer.play(widget.pois[_currentPoiIndex].audioDescription);
   }
 
   @override
@@ -98,24 +73,34 @@ class _PoiDetailsState extends State<PoiDetails> {
                     },
                   ),
                 ),
-                /*Positioned(
-                  left: 0,
-                  top: MediaQuery.of(context).size.height * 0.15 - 24,
-                  child: IconButton(
-                    icon: const Icon(Icons.arrow_back_ios),
-                    onPressed: _previousImage,
-                  ),
-                ),
-                Positioned(
-                  right: 0,
-                  top: MediaQuery.of(context).size.height * 0.15 - 24,
-                  child: IconButton(
-                    icon: const Icon(Icons.arrow_forward_ios),
-                    onPressed: _nextImage,
-                  ),
-                ),*/
               ],
             ),
+            const SizedBox(height: 20),
+            AudioWidget(audio: widget.pois[_currentPoiIndex].audioDescription),
+            const SizedBox(height: 20),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  widget.pois[_currentPoiIndex].description,
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            ...widget.pois[_currentPoiIndex].quiz.map((quiz) {
+              return QuizWidget(
+                question: quiz.description,
+                answer1: quiz.answer1,
+                answer2: quiz.answer2,
+                answer3: quiz.answer3,
+                answer4: quiz.answer4,
+                correctAnswer: quiz.correctAnswer,
+              );
+            }),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,47 +115,6 @@ class _PoiDetailsState extends State<PoiDetails> {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Logic to play the audio description
-                playSound();
-              },
-              child: const Text('Play audio description'),
-            ),
-            const SizedBox(height: 20),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  widget.pois[_currentPoiIndex].description,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-              ),
-            ),
-             Card(
-               child:
-                Column(
-                  children: [
-                    ListView.builder(
-                      itemCount: widget.pois[_currentPoiIndex].quiz.length,
-                      itemBuilder: (context, index) {
-                        return QuizWidget(
-                          question: widget.pois[_currentPoiIndex].quiz[index].description,
-                          answer1: widget.pois[_currentPoiIndex].quiz[index].answer1,
-                          answer2: widget.pois[_currentPoiIndex].quiz[index].answer2,
-                          answer3: widget.pois[_currentPoiIndex].quiz[index].answer3,
-                          answer4: widget.pois[_currentPoiIndex].quiz[index].answer4,
-                          correctAnswer: widget.pois[_currentPoiIndex].quiz[index].answer
-                        );
-                      },
-                    ),
-                  ],
-                ),
-             )
           ],
         ),
       ),
