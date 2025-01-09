@@ -17,8 +17,6 @@ class _LandsightState extends State<Landsight> {
   late Services services;
   late String initialRoute;
 
-  var kColorScheme = ColorScheme.fromSeed(seedColor: Colors.deepOrangeAccent);
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -39,22 +37,17 @@ class _LandsightState extends State<Landsight> {
         navigatorKey: services.navigatorKey,
         debugShowCheckedModeBanner: false,
         initialRoute: initialRoute,
-        /*theme: ThemeData(
-          //colore sfondo
-          scaffoldBackgroundColor: Colors.white70,
-          //colore principale
-          primaryColor: Colors.blueGrey,
-          //colore secondario
-          secondaryHeaderColor: Colors.black12,
-          //fontFamily: 'SofiaSansExtraCondensed',
-        ),*/
-        theme: ThemeData.from(
-          colorScheme: kColorScheme,
+        theme: ThemeData(
+          primarySwatch: Colors.orange,
+          primaryColor: Colors.orange,
+          appBarTheme: const AppBarTheme(
+            elevation: 0,
+            iconTheme: IconThemeData(color: Colors.orange),
+          ),
         ),
         routes: {
           '/home': (context) => const CustomBottomBarWidget(),
           //'/onBoardingPage': (context) => const OnboardingPage(),
-          //'/settings': (context) => const SettingsScreen(),
         },
       ),
     );

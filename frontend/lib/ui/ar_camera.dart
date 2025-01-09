@@ -19,6 +19,7 @@ class _ArCameraState extends State<ArCamera> {
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
             )),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),

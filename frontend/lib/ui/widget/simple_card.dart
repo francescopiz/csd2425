@@ -41,7 +41,7 @@ class _SimpleCardState extends State<SimpleCard> {
                       Text(
                         widget.title,
                         style: const TextStyle(
-                          fontSize: 18.0,
+                          fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                         ),
                         textAlign: TextAlign.left,
@@ -49,15 +49,20 @@ class _SimpleCardState extends State<SimpleCard> {
                       if (widget.subtitle != '')
                         Text(
                           widget.subtitle,
-                          style: const TextStyle(
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.normal,
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            fontStyle: FontStyle.italic,
+                            color: Theme.of(context).primaryColor,
                           ),
                           textAlign: TextAlign.left,
                         ),
                     ],
                   ),
-                  const Icon(Icons.arrow_forward_ios_rounded, size: 15.0),
+                  Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 20.0,
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ],
               )),
         ),

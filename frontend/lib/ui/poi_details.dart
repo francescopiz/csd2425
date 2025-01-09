@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:frontend/api/poi.dart';
 import 'package:frontend/ui/widget/audio_widget.dart';
@@ -32,63 +31,59 @@ class _PoiDetailsState extends State<PoiDetails> {
     super.dispose();
   }
 
-  void _nextPoi() {
-    if (_currentPoiIndex < widget.pois.length - 1) {
-      setState(() {
-        _currentPoiIndex++;
-        _pageController.jumpToPage(_currentPoiIndex);
-      });
-    }
-  }
-
-  void _previousPoi() {
-    if (_currentPoiIndex > 0) {
-      setState(() {
-        _currentPoiIndex--;
-        _pageController.jumpToPage(_currentPoiIndex);
-      });
-    }
+  void _changePoi(int newIndex) {
+    setState(() {
+      _currentPoiIndex = newIndex;
+      _pageController.jumpToPage(newIndex);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.pois[_currentPoiIndex].name)),
+      appBar: AppBar(title: Text(widget.pois[_currentPoiIndex].name, style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold)),),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            Stack(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  child: PageView.builder(
-                    controller: _pageController,
-                    itemCount: widget.pois[_currentPoiIndex].mediafiles.length,
-                    itemBuilder: (context, index) {
-                      return Image.memory(
-                        base64Decode(widget
-                            .pois[_currentPoiIndex].mediafiles[index].data),
-                      );
-                    },
-                  ),
-                ),
-              ],
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: widget.pois[_currentPoiIndex].mediafiles.length,
+                itemBuilder: (context, index) {
+                  return Image.memory(
+                    base64Decode(widget.pois[_currentPoiIndex].mediafiles[index].data),
+                  );
+                },
+              ),
             ),
             const SizedBox(height: 20),
             AudioWidget(audio: widget.pois[_currentPoiIndex].audioDescription),
             const SizedBox(height: 20),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  widget.pois[_currentPoiIndex].description,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontStyle: FontStyle.italic,
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Descrizione:',
+                          style: TextStyle(fontSize: 14.0, fontStyle: FontStyle.italic),
+                        ),
+                        Text(
+                          widget.pois[_currentPoiIndex].description,
+                          style: const TextStyle(fontSize: 16.0, fontStyle: FontStyle.italic),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
+              )
             ),
             const SizedBox(height: 20),
             ...widget.pois[_currentPoiIndex].quiz.map((quiz) {
@@ -102,18 +97,21 @@ class _PoiDetailsState extends State<PoiDetails> {
               );
             }),
             const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton(
-                  onPressed: _previousPoi,
-                  child: const Text('Previous POI'),
-                ),
-                ElevatedButton(
-                  onPressed: _nextPoi,
-                  child: const Text('Next POI'),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: _currentPoiIndex > 0 ? () => _changePoi(_currentPoiIndex - 1) : null,
+                    child: const Text('Previous POI'),
+                  ),
+                  ElevatedButton(
+                    onPressed: _currentPoiIndex < widget.pois.length - 1 ? () => _changePoi(_currentPoiIndex + 1) : null,
+                    child: const Text('Next POI'),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

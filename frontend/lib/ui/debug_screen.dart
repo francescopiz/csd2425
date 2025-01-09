@@ -24,7 +24,9 @@ class _DebugScreenState extends State<DebugScreen> {
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
-            )),
+            ),
+        ),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: Center(
         child: Padding(

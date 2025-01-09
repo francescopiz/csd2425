@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/ui/poi_details.dart';
 import 'package:frontend/ui/widget/simple_card.dart';
-
 import '../bloc/tour_bloc/tour_bloc.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    return _HomeState();
-  }
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
@@ -20,8 +17,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    _tourBloc = BlocProvider.of<TourBloc>(context);
-    _tourBloc.add(LoadTours());
+    _tourBloc = BlocProvider.of<TourBloc>(context)..add(LoadTours());
   }
 
   @override
@@ -35,11 +31,14 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Seleziona il tuo tour',
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-              )),
+          title: Text(
+            'Seleziona il tuo tour',
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         ),
         body: BlocBuilder<TourBloc, TourState>(
           bloc: _tourBloc,
@@ -64,10 +63,11 @@ class _HomeState extends State<Home> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PoiDetails(
-                                      pois: state.tours[index].pois,
-                                      index: 0,
-                                    )),
+                              builder: (context) => PoiDetails(
+                                pois: tour.pois,
+                                index: 0,
+                              ),
+                            ),
                           );
                           _tourBloc.add(LoadTours());
                         },
