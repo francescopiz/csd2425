@@ -41,7 +41,12 @@ class _PoiDetailsState extends State<PoiDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.pois[_currentPoiIndex].name, style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold)),),
+      appBar: AppBar(
+        title: Text(widget.pois[_currentPoiIndex].name,
+            style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontWeight: FontWeight.bold)),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -53,7 +58,8 @@ class _PoiDetailsState extends State<PoiDetails> {
                 itemCount: widget.pois[_currentPoiIndex].mediafiles.length,
                 itemBuilder: (context, index) {
                   return Image.memory(
-                    base64Decode(widget.pois[_currentPoiIndex].mediafiles[index].data),
+                    base64Decode(
+                        widget.pois[_currentPoiIndex].mediafiles[index].data),
                   );
                 },
               ),
@@ -62,29 +68,30 @@ class _PoiDetailsState extends State<PoiDetails> {
             AudioWidget(audio: widget.pois[_currentPoiIndex].audioDescription),
             const SizedBox(height: 20),
             SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Descrizione:',
-                          style: TextStyle(fontSize: 14.0, fontStyle: FontStyle.italic),
-                        ),
-                        Text(
-                          widget.pois[_currentPoiIndex].description,
-                          style: const TextStyle(fontSize: 16.0, fontStyle: FontStyle.italic),
-                        ),
-                      ],
+                width: MediaQuery.of(context).size.width,
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Descrizione:',
+                            style: TextStyle(
+                                fontSize: 14.0, fontStyle: FontStyle.italic),
+                          ),
+                          Text(
+                            widget.pois[_currentPoiIndex].description,
+                            style: const TextStyle(
+                                fontSize: 16.0, fontStyle: FontStyle.italic),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              )
-            ),
+                )),
             const SizedBox(height: 20),
             ...widget.pois[_currentPoiIndex].quiz.map((quiz) {
               return QuizWidget(
@@ -103,11 +110,15 @@ class _PoiDetailsState extends State<PoiDetails> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
-                    onPressed: _currentPoiIndex > 0 ? () => _changePoi(_currentPoiIndex - 1) : null,
+                    onPressed: _currentPoiIndex > 0
+                        ? () => _changePoi(_currentPoiIndex - 1)
+                        : null,
                     child: const Text('Previous POI'),
                   ),
                   ElevatedButton(
-                    onPressed: _currentPoiIndex < widget.pois.length - 1 ? () => _changePoi(_currentPoiIndex + 1) : null,
+                    onPressed: _currentPoiIndex < widget.pois.length - 1
+                        ? () => _changePoi(_currentPoiIndex + 1)
+                        : null,
                     child: const Text('Next POI'),
                   ),
                 ],

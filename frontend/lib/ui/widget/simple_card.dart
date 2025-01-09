@@ -56,7 +56,7 @@ class _SimpleCardState extends State<SimpleCard> {
                       ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 20.0,

@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
 class ArCamera extends StatefulWidget {
   const ArCamera({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    return _ArCameraState();
-  }
+  State<ArCamera> createState() => _ArCameraState();
 }
 
 class _ArCameraState extends State<ArCamera> {
+  bool isScanCompleted = false;
+
+  void closeScreen() {
+    isScanCompleted = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +26,15 @@ class _ArCameraState extends State<ArCamera> {
             )),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Center(
-          child: Text('inquadra il qrcode per vedere fantasticherie'),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: MobileScanner(
+          onDetect: (barcodeCapture) {
+            if (!isScanCompleted) {
+              String code = barcodeCapture.barcodes.first.rawValue ?? '---';
+              isScanCompleted = true;
+            }
+          },
         ),
       ),
     );

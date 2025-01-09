@@ -46,7 +46,8 @@ class _HomeState extends State<Home> {
             if (state is TourInitial) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is TourError) {
-              return Text('Error: ${state.message}');
+              return const Center(child: CircularProgressIndicator());
+                //Text('Error: ${state.message}');
             } else if (state is ToursLoaded) {
               if (state.tours.isEmpty) {
                 return const Text('No tours available');
