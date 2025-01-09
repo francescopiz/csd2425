@@ -11,11 +11,11 @@ final class QuizInitial extends QuizState {
 }
 
 final class CorrectAnswer extends QuizState {
-  final Color color = Colors.green;
+  final Color color = Colors.lightGreen;
   CorrectAnswer(super.quizId);
 }
 
 final class WrongAnswer extends QuizState {
-  final Color color = Colors.red;
+  final Color color = Colors.redAccent;
   WrongAnswer(super.quizId);
 }
