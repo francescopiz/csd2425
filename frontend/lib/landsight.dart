@@ -5,6 +5,7 @@ import 'package:frontend/services/services.dart';
 import 'package:frontend/ui/widget/custom_bottombar.dart';
 
 import 'bloc/ar_bloc/ar_bloc.dart';
+import 'bloc/quiz_bloc/quiz_bloc.dart';
 
 class Landsight extends StatefulWidget {
   const Landsight({super.key});
@@ -31,6 +32,7 @@ class _LandsightState extends State<Landsight> {
       providers: [
         BlocProvider(create: (context) => ArBloc()),
         BlocProvider(create: (context) => TourBloc(services.tourService)),
+        BlocProvider(create: (context) => QuizBloc()),
       ],
       child: MaterialApp(
         navigatorObservers: [services.routeObserver],
