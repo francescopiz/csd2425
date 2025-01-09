@@ -1,15 +1,21 @@
 part of 'quiz_bloc.dart';
 
 @immutable
-sealed class QuizState {}
+sealed class QuizState {
+  final int quizId;
+  QuizState(this.quizId);
+}
 
-final class QuizInitial extends QuizState {}
-
+final class QuizInitial extends QuizState {
+  QuizInitial(super.quizId);
+}
 
 final class CorrectAnswer extends QuizState {
   final Color color = Colors.green;
-  CorrectAnswer();
+  CorrectAnswer(super.quizId);
 }
-final class WrongAnswer extends QuizState {
 
+final class WrongAnswer extends QuizState {
+  final Color color = Colors.red;
+  WrongAnswer(super.quizId);
 }

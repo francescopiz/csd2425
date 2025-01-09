@@ -8,14 +8,20 @@ part 'quiz_event.dart';
 
 part 'quiz_state.dart';
 
-class QuizBloc extends Bloc<QuizEvent, QuizState> {
+class QuizBloc extends Bloc<QuizEvent, Map<int, QuizState>> {
 
-  QuizBloc() : super(QuizInitial()) {
+  QuizBloc() : super({}) {
     on<SelectedAnswer>((event, emit) async {
-       if(event.answerIndex==event.correctIndex) {
-         emit(CorrectAnswer());
+       //if(event.answerIndex==event.correctIndex) {
+      //  emit(CorrectAnswer());
+      //} else {
+      //   emit(WrongAnswer());
+      //}
+       final currentState = state[event.quizId] ?? QuizInitial(event.quizId);
+       if (event.answerIndex == event.correctIndex) {
+         emit({...state, event.quizId: CorrectAnswer(event.quizId)});
        } else {
-         emit(WrongAnswer());
+         emit({...state, event.quizId: WrongAnswer(event.quizId)});
        }
     });
   }

@@ -4,10 +4,11 @@ part of 'quiz_bloc.dart';
 sealed class QuizEvent {}
 
 class SelectedAnswer extends QuizEvent {
+  final int quizId;
   final int correctIndex;
   final int answerIndex;
 
-  SelectedAnswer(this.correctIndex, this.answerIndex);
+  SelectedAnswer(this.quizId,this.correctIndex, this.answerIndex);
 }
 
 

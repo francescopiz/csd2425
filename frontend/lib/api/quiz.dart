@@ -1,4 +1,5 @@
 class Quiz {
+  final int id;
   final String description;
   final String answer1;
   final String answer2;
@@ -7,7 +8,8 @@ class Quiz {
   final int correctAnswer;
 
   Quiz(
-      {required this.description,
+      {required this.id,
+        required this.description,
       required this.answer1,
       required this.answer2,
       this.answer3,
@@ -16,6 +18,7 @@ class Quiz {
 
   factory Quiz.fromJson(Map<String, dynamic> json) {
     return Quiz(
+        id: json['id'],
         description: json['description'],
         answer1: json['answer1'],
         answer2: json['answer2'],
@@ -26,6 +29,7 @@ class Quiz {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'description': description,
       'answer1': answer1,
       'answer2': answer2,

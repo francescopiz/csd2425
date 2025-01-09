@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/quiz_bloc/quiz_bloc.dart';
 
 class QuizWidget extends StatefulWidget {
+  final int quizId;
   final String question;
   final String answer1;
   final String answer2;
@@ -14,6 +15,7 @@ class QuizWidget extends StatefulWidget {
 
   const QuizWidget({
     super.key,
+    required this.quizId,
     required this.question,
     required this.answer1,
     required this.answer2,
@@ -38,7 +40,7 @@ class _QuizWidgetState extends State<QuizWidget> {
     if (widget.answer4 != null) answers.add(widget.answer4!);
     return ConfettiWidget(
       confettiController: controller,
-      blastDirection: -3.4/2,
+      blastDirection: 45,
       emissionFrequency: 0.05,
       numberOfParticles: 20,
       maxBlastForce: 100,
@@ -55,23 +57,33 @@ class _QuizWidgetState extends State<QuizWidget> {
             textAlign: TextAlign.left,
           ),
           ...answers.map((answer) {
-            return BlocBuilder<QuizBloc, QuizState>(
+            return BlocBuilder<QuizBloc, Map<int, QuizState>>(
               builder: (BuildContext context, state) {
+                final quizState = state[widget.quizId] ?? QuizInitial(widget.quizId);
                 return SizedBox(
-                  child:
-                  RadioListTile<int>(
+                  child: RadioListTile<int>(
                     title: Text(answer),
                     value: answers.indexOf(answer),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     selected: selectedAnswer == answers.indexOf(answer),
-                    selectedTileColor: state is CorrectAnswer ? state.color : state is WrongAnswer ? Colors.red: Colors.black,
+                    selectedTileColor: quizState is CorrectAnswer
+                        ? quizState.color
+                        : quizState is WrongAnswer
+                        ? quizState.color
+                        : Colors.transparent,
                     groupValue: selectedAnswer,
                     onChanged: (int? value) {
-                      context.read<QuizBloc>().add(SelectedAnswer(widget.correctAnswer, answers.indexOf(answer)));
-                      selectedAnswer = value!;
-                      state is CorrectAnswer ? controller.play() : controller.stop();
+                      context.read<QuizBloc>().add(SelectedAnswer(widget.quizId, widget.correctAnswer, answers.indexOf(answer)));
+                      setState(() {
+                        selectedAnswer = value!;
+                      });
+                      if (quizState is CorrectAnswer) {
+                        controller.play();
+                      } else {
+                        controller.stop();
+                      }
                     },
                   ),
                 );

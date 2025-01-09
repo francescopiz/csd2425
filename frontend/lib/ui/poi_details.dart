@@ -95,6 +95,7 @@ class _PoiDetailsState extends State<PoiDetails> {
             const SizedBox(height: 20),
             ...widget.pois[_currentPoiIndex].quiz.map((quiz) {
               return QuizWidget(
+                quizId: quiz.id,
                 question: quiz.description,
                 answer1: quiz.answer1,
                 answer2: quiz.answer2,
