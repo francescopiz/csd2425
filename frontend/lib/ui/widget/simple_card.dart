@@ -32,39 +32,39 @@ class _SimpleCardState extends State<SimpleCard> {
             ),
           ),
           child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        widget.title,
-                        style: const TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.left,
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.title,
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
                       ),
-                      if (widget.subtitle != '')
-                        Text(
-                          widget.subtitle,
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            fontStyle: FontStyle.italic,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          textAlign: TextAlign.left,
+                    ),
+                    if (widget.subtitle != '')
+                      Text(
+                        widget.subtitle,
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          fontStyle: FontStyle.italic,
+                          color: Theme.of(context).primaryColor,
                         ),
-                    ],
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 20.0,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ],
-              )),
+                      ),
+                  ],
+                ),
+                Spacer(),
+                Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 20.0,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
