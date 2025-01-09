@@ -13,6 +13,8 @@ namespace Landsight.Model.Configurations
             builder.Property(t => t.Id).ValueGeneratedOnAdd();
             builder.Property(t => t.Name)
                 .HasMaxLength(50);
+            builder.Property(t => t.Description)
+                .HasMaxLength(1000);
         }
     }
 }

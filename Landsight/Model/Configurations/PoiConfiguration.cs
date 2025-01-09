@@ -15,6 +15,8 @@ namespace Landsight.Model.Configurations
             builder.Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(50);
+            builder.Property(p => p.Description)
+                .HasMaxLength(1000);
         }
     }
 }
