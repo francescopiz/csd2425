@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/ui/ar_camera.dart';
+import 'package:frontend/ui/ar_screen.dart';
+import 'package:frontend/ui/ar_test.dart';
 import 'package:frontend/ui/debug_screen.dart';
 import 'package:frontend/ui/home.dart';
 
@@ -15,7 +17,7 @@ class CustomBottomBarWidgetState extends State<CustomBottomBarWidget> {
 
   final ValueNotifier<int> _selectedIndex = ValueNotifier<int>(1);
   final List<Widget> _actualScreens = [
-    const ArCamera(),
+    const ArTest(),
     const Home(),
     const DebugScreen(),
   ];

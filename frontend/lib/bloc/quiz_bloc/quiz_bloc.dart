@@ -19,9 +19,9 @@ class QuizBloc extends Bloc<QuizEvent, Map<int, QuizState>> {
       //}
        //final currentState = state[event.quizId] ?? QuizInitial(event.quizId);
        if (event.answerIndex == event.correctIndex) {
-         emit({...state, event.quizId: CorrectAnswer(event.quizId)});
+         emit({...state, event.quizId: CorrectAnswer(event.quizId, event.value)});
        } else {
-         emit({...state, event.quizId: WrongAnswer(event.quizId)});
+         emit({...state, event.quizId: WrongAnswer(event.quizId, event.value)});
        }
     });
   }

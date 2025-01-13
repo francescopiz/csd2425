@@ -31,7 +31,7 @@ class _ArCameraState extends State<ArCamera> {
         child: MobileScanner(
           onDetect: (barcodeCapture) {
             if (!isScanCompleted) {
-              //String code = barcodeCapture.barcodes.first.rawValue ?? '---';
+              String code = barcodeCapture.barcodes.first.rawValue ?? '---';
               isScanCompleted = true;
             }
           },

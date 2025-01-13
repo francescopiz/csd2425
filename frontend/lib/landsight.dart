@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/bloc/tour_bloc/tour_bloc.dart';
 import 'package:frontend/services/services.dart';
+import 'package:frontend/ui/ar_screen.dart';
+import 'package:frontend/ui/ar_test.dart';
 import 'package:frontend/ui/widget/custom_bottombar.dart';
 
 import 'bloc/ar_bloc/ar_bloc.dart';
@@ -45,6 +47,10 @@ class _LandsightState extends State<Landsight> {
           appBarTheme: const AppBarTheme(
             elevation: 0,
             iconTheme: IconThemeData(color: Colors.orange),
+          ),
+          buttonTheme: const ButtonThemeData(
+            buttonColor: Colors.orange,
+            textTheme: ButtonTextTheme.primary,
           ),
         ),
         routes: {
