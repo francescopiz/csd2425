@@ -40,11 +40,54 @@ class _LandsightState extends State<Landsight> {
         debugShowCheckedModeBanner: false,
         initialRoute: initialRoute,
         theme: ThemeData(
-          primarySwatch: Colors.orange,
           primaryColor: Colors.orange,
+          scaffoldBackgroundColor: Colors.white,
           appBarTheme: const AppBarTheme(
             elevation: 0,
+            color: Colors.white,
             iconTheme: IconThemeData(color: Colors.orange),
+            titleTextStyle: TextStyle(
+              color: Colors.orange,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.orange,
+            textTheme: ButtonTextTheme.primary,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.orange,
+              foregroundColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+            ),
+          ),
+          inputDecorationTheme: const InputDecorationTheme(
+            border: OutlineInputBorder(),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.orange),
+            ),
+            labelStyle: TextStyle(color: Colors.orange),
+          ),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: Colors.orange,
+            foregroundColor: Colors.white,
+          ),
+          iconTheme: const IconThemeData(
+            color: Colors.orange,
+          ),
+          cardTheme: CardTheme(
+            color: Colors.orange.withOpacity(0.8),
+            shadowColor: Colors.white,
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+            ),
           ),
         ),
         routes: {

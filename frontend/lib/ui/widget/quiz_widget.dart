@@ -47,7 +47,8 @@ class _QuizWidgetState extends State<QuizWidget> {
           widget.question,
           style: const TextStyle(
             fontSize: 18.0,
-            fontWeight: FontWeight.bold,
+            color: Colors.orange,
+            fontWeight: FontWeight.bold
           ),
         ),
         ...answers.map((answer) {

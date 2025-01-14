@@ -43,8 +43,7 @@ class _PoiDetailsState extends State<PoiDetails> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.pois[_currentPoiIndex].name,
-            style: TextStyle(
-                color: Theme.of(context).primaryColor,
+            style: const TextStyle(
                 fontWeight: FontWeight.bold)),
       ),
       body: SingleChildScrollView(

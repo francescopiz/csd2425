@@ -19,9 +19,8 @@ class _ArCameraState extends State<ArCamera> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fotocamera AR',
+        title: const Text('Fotocamera AR',
             style: TextStyle(
-              color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
             )),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,

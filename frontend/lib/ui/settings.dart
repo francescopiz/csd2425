@@ -14,10 +14,9 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Impostazioni',
           style: TextStyle(
-            color: Theme.of(context).primaryColor,
             fontWeight: FontWeight.bold,
           ),
         ),
