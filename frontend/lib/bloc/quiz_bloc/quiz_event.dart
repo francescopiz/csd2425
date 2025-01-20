@@ -10,5 +10,10 @@ class SelectedAnswer extends QuizEvent {
 
   SelectedAnswer(this.quizId,this.correctIndex, this.answerIndex);
 }
+class QuizSelected extends QuizEvent {
+  final int quizId;
+
+  QuizSelected(this.quizId);
+}
 
 

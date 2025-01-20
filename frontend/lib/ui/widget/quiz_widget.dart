@@ -54,13 +54,14 @@ class _QuizWidgetState extends State<QuizWidget> {
         ...answers.map((answer) {
           return BlocConsumer<QuizBloc, Map<int, QuizState>>(
             listener: (context, state) {
-              final quizState = state[widget.quizId] ??
-                  QuizInitial(widget.quizId);
+              final quizState = state[context.read<QuizBloc>().currentQuiz] ??
+                  QuizInitial(context.read<QuizBloc>().currentQuiz);
               if (quizState is CorrectAnswer) {
                 controller.play();
               } else {
-                controller.stop();
+                controller.stop(clearAllParticles: true);
               }
+
             },
             builder: (BuildContext context, state) {
               final quizState = state[widget.quizId] ??
@@ -91,6 +92,7 @@ class _QuizWidgetState extends State<QuizWidget> {
                         setState(() {
                           selectedAnswer = value!;
                         });
+                        context.read<QuizBloc>().add(QuizSelected(widget.quizId));
                         context.read<QuizBloc>().add(SelectedAnswer(
                             widget.quizId, widget.correctAnswer,
                             answers.indexOf(answer)));
