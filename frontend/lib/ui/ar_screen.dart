@@ -29,36 +29,41 @@ class ArTestState extends State<ArTest> {
     }
   }
 
-  Future<void> displayShape(ArCoreController controller, String shapeType) async {
+  Future<void> displayShape(
+      ArCoreController controller, String shapeType) async {
     try {
       ArCoreNode node;
 
       // In base al valore di "shapeType" carichiamo il file di immagine appropriato
-      if (shapeType == 'moon') {
+      if (shapeType == 'quadro') {
         // Carica un'immagine locale (modifica il path in base alle tue risorse)
-        final ByteData textureBytes = await rootBundle.load("assets/moon.jpg");
+        final ByteData textureBytes = await rootBundle.load("assets/quadro.jpg");
         final material = ArCoreMaterial(
           color: Colors.black,
           textureBytes: textureBytes.buffer.asUint8List(),
         );
-        // Creiamo una "plane" utilizzando un cubo molto sottile
         final imagePlane = ArCoreCube(
           materials: [material],
-          size: vector64.Vector3(1, 1, 0.1), // Dimensioni: larghezza, altezza, profondità minima
+          size: vector64.Vector3(
+              1, 1, 0.1),
         );
         node = ArCoreNode(
           shape: imagePlane,
           position: vector64.Vector3(0, 0, -2),
         );
-      } else if (shapeType == 'sphere') {
-        final ByteData textureBytes = await rootBundle.load("assets/earth_map.jpg");
+      } else if (shapeType == 'rodolfo') {
+        final ByteData textureBytes =
+            await rootBundle.load("assets/rodolfo.jpg");
         final material = ArCoreMaterial(
           color: Colors.blue,
           textureBytes: textureBytes.buffer.asUint8List(),
         );
-        final sphere = ArCoreSphere(materials: [material]);
-        node = ArCoreNode(
-          shape: sphere,
+        final imagePlane = ArCoreCube(
+          materials: [material],
+          size: vector64.Vector3(
+              1, 1, 0.1),
+        );        node = ArCoreNode(
+          shape: imagePlane,
           position: vector64.Vector3(0, 0, -1.5),
         );
       } else if (shapeType == 'cube') {
@@ -90,23 +95,30 @@ class ArTestState extends State<ArTest> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AR Test'),
+        title: const Text(
+          'FotocameraAR',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.orange,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
       body: isScanCompleted
           ? ArCoreView(
-        onArCoreViewCreated: augmentedRealityViewCreated,
-      )
+              onArCoreViewCreated: augmentedRealityViewCreated,
+            )
           : MobileScanner(
-        onDetect: (barcodeCapture) {
-          final qrValue = barcodeCapture.barcodes.first.rawValue;
-          if (qrValue != null && !isScanCompleted) {
-            setState(() {
-              shape = qrValue;
-              isScanCompleted = true;
-            });
-          }
-        },
-      ),
+              onDetect: (barcodeCapture) {
+                final qrValue = barcodeCapture.barcodes.first.rawValue;
+                if (qrValue != null && !isScanCompleted) {
+                  setState(() {
+                    shape = qrValue;
+                    isScanCompleted = true;
+                  });
+                }
+              },
+            ),
     );
   }
 }

@@ -45,7 +45,6 @@ class Services {
     return Services(routeObserver, navigatorKey, false, tourService);
   }
 }
-//controllo se sia la prima volta che l'app viene avviata
 /*final prefs = await SharedPreferences.getInstance();
     bool isFirstLaunch = prefs.getBool("first_1.0.0") ?? true;
 

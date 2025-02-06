@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/ui/ar_test.dart';
-import 'package:frontend/ui/debug_screen.dart';
+import 'package:frontend/ui/ar_screen.dart';
+import 'package:frontend/ui/settings.dart';
 import 'package:frontend/ui/home.dart';
 
 class CustomBottomBarWidget extends StatefulWidget {
@@ -17,7 +17,7 @@ class CustomBottomBarWidgetState extends State<CustomBottomBarWidget> {
   final List<Widget> _actualScreens = [
     const ArTest(),
     const Home(),
-    const DebugScreen(),
+    const SettingsScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -42,9 +42,8 @@ class CustomBottomBarWidgetState extends State<CustomBottomBarWidget> {
             onTap: _onItemTapped,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.camera_alt,
-                color: Colors.orange),
-                label: 'Fotocamera',
+                icon: Icon(Icons.camera_alt,),
+                label: 'FotocameraAR',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),

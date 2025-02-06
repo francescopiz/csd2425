@@ -35,8 +35,9 @@ class _HomeState extends State<Home> {
             'Seleziona il tuo tour',
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.orange
+              color: Colors.orange,
             ),
+            textAlign: TextAlign.center,
           ),
         ),
         body: BlocBuilder<TourBloc, TourState>(
@@ -46,7 +47,7 @@ class _HomeState extends State<Home> {
               return const Center(child: CircularProgressIndicator());
             } else if (state is TourError) {
               return const Center(child: CircularProgressIndicator());
-                //Text('Error: ${state.message}');
+              //Text('Error: ${state.message}');
             } else if (state is ToursLoaded) {
               if (state.tours.isEmpty) {
                 return const Text('No tours available');
@@ -72,9 +73,7 @@ class _HomeState extends State<Home> {
                           _tourBloc.add(LoadTours());
                         },
                         child: SimpleCard(
-                          title: tour.name,
-                          subtitle: tour.description
-                        ),
+                            title: tour.name, subtitle: tour.description),
                       );
                     },
                   ),

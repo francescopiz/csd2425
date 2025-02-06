@@ -44,7 +44,11 @@ class _PoiDetailsState extends State<PoiDetails> {
       appBar: AppBar(
         title: Text(widget.pois[_currentPoiIndex].name,
             style: const TextStyle(
-                fontWeight: FontWeight.bold)),
+                fontWeight: FontWeight.bold,
+              color: Colors.orange,
+            ),
+          textAlign: TextAlign.center,
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -63,12 +67,11 @@ class _PoiDetailsState extends State<PoiDetails> {
                 },
               ),
             ),
-            const SizedBox(height: 20),
             AudioWidget(audio: widget.pois[_currentPoiIndex].audioDescription),
-            const SizedBox(height: 20),
             SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Card(
+                  color: Colors.orange.shade300,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Align(
@@ -113,13 +116,19 @@ class _PoiDetailsState extends State<PoiDetails> {
                     onPressed: _currentPoiIndex > 0
                         ? () => _changePoi(_currentPoiIndex - 1)
                         : null,
+                    style: const ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(Colors.orange),
+                    ),
                     child: const Text('Previous POI'),
                   ),
                   ElevatedButton(
                     onPressed: _currentPoiIndex < widget.pois.length - 1
                         ? () => _changePoi(_currentPoiIndex + 1)
                         : null,
-                    child: const Text('Next POI'),
+                    style: const ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(Colors.orange),
+                    ),
+                    child: const Text('Next POI')
                   ),
                 ],
               ),

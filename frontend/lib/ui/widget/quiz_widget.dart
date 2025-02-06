@@ -13,15 +13,16 @@ class QuizWidget extends StatefulWidget {
   final String? answer4;
   final int correctAnswer;
 
-  const QuizWidget(
-      {super.key,
-      required this.quizId,
-      required this.question,
-      required this.answer1,
-      required this.answer2,
-      this.answer3,
-      this.answer4,
-      required this.correctAnswer});
+  const QuizWidget({
+    super.key,
+    required this.quizId,
+    required this.question,
+    required this.answer1,
+    required this.answer2,
+    this.answer3,
+    this.answer4,
+    required this.correctAnswer
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -31,98 +32,72 @@ class QuizWidget extends StatefulWidget {
 
 class _QuizWidgetState extends State<QuizWidget> {
   int selectedAnswer = -1;
-  late List<ConfettiController> confettiControllers;
-  List<String> answers = [];
-
-  @override
-  void initState() {
-    super.initState();
-    answers.add(widget.answer1);
-    answers.add(widget.answer2);
-    if (widget.answer3 != null) answers.add(widget.answer3!);
-    if (widget.answer4 != null) answers.add(widget.answer4!);
-    confettiControllers = List.generate(
-        answers.length, (_) => ConfettiController(duration: const Duration(seconds: 1)));
-  }
-
-  @override
-  void dispose() {
-    for (var controller in confettiControllers) {
-      controller.dispose();
-    }
-    super.dispose();
-  }
+  ConfettiController controller = ConfettiController(
+      duration: const Duration(seconds: 1));
 
   @override
   Widget build(BuildContext context) {
-    bool? booleano = false;
+    List<String> answers = [widget.answer1, widget.answer2];
+    if (widget.answer3 != null) answers.add(widget.answer3!);
+    if (widget.answer4 != null) answers.add(widget.answer4!);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           widget.question,
           style: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
+              fontSize: 18.0,
+              color: Colors.orange,
+              fontWeight: FontWeight.bold
           ),
         ),
-        ...answers.asMap().entries.map((entry) {
-          int index = entry.key;
-          String answer = entry.value;
+        ...answers.map((answer) {
           return BlocConsumer<QuizBloc, Map<int, QuizState>>(
             listener: (context, state) {
-              final quizState =
-                  state[widget.quizId] ?? QuizInitial(widget.quizId);
-              if (quizState is CorrectAnswer && selectedAnswer == index) {
-                confettiControllers[index].play();
+              final quizState = state[context.read<QuizBloc>().currentQuiz] ??
+                  QuizInitial(context.read<QuizBloc>().currentQuiz);
+              if (quizState is CorrectAnswer) {
+                controller.play();
               } else {
-                confettiControllers[index].stop();
+                controller.stop(clearAllParticles: true);
               }
+
             },
-            builder: (context, state){
-              return RadioListTile(value: booleano,
-                  groupValue: booleano,
-                  selectedTileColor: Colors.green,
-                  onChanged: (value) {
-                    booleano=value;
-                  });
-            }
-            /*builder: (context, state) {
-              final quizState =
-                  state[widget.quizId] ?? QuizInitial(widget.quizId);
+            builder: (BuildContext context, state) {
+              final quizState = state[widget.quizId] ??
+                  QuizInitial(widget.quizId);
               return ConfettiWidget(
-                confettiController: confettiControllers[index],
-                blastDirectionality: BlastDirectionality.explosive,
-                emissionFrequency: 0.01,
-                numberOfParticles: 50,
-                maxBlastForce: 100,
-                minBlastForce: 80,
-                gravity: 0.1,
-                child: RadioListTile<int>(
-                  title: Text(answer),
-                  value: index,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  selected: selectedAnswer == index,
-                  selectedTileColor: quizState is CorrectAnswer
-                      ? quizState.color
-                      : quizState is WrongAnswer
-                          ? quizState.color
-                          : Colors.transparent,
-                  groupValue: selectedAnswer,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedAnswer = value!;
-                    });
-                    context.read<QuizBloc>().add(
-                          SelectedAnswer(widget.quizId, widget.correctAnswer,
-                              index, value),
-                        );
-                  },
-                ),
-              );
-            },*/
+                  confettiController: controller,
+                  blastDirectionality: BlastDirectionality.explosive,
+                  emissionFrequency: 0.1,
+                  numberOfParticles: 40,
+                  maxBlastForce: 80,
+                  minBlastForce: 60,
+                  gravity: 0.1,
+                  child: RadioListTile<int>(
+                    title: Text(answer),
+                    value: answers.indexOf(answer),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    selected: selectedAnswer == answers.indexOf(answer),
+                    selectedTileColor: quizState is CorrectAnswer
+                        ? quizState.color
+                        : quizState is WrongAnswer
+                        ? quizState.color
+                        : Colors.transparent,
+                    groupValue: selectedAnswer,
+                    onChanged: (int? value) {
+                      setState(() {
+                        selectedAnswer = value!;
+                      });
+                      context.read<QuizBloc>().add(QuizSelected(widget.quizId));
+                      context.read<QuizBloc>().add(SelectedAnswer(
+                          widget.quizId, widget.correctAnswer,
+                          answers.indexOf(answer)));
+                    },
+                  ));
+            },
           );
         }),
       ],
