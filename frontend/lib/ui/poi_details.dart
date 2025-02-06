@@ -56,19 +56,28 @@ class _PoiDetailsState extends State<PoiDetails> {
                 controller: _pageController,
                 itemCount: widget.pois[_currentPoiIndex].mediafiles.length,
                 itemBuilder: (context, index) {
-                  return Image.memory(
-                    base64Decode(
-                        widget.pois[_currentPoiIndex].mediafiles[index].data),
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(15.0),
+                    child: Image.memory(
+                      base64Decode(widget.pois[_currentPoiIndex].mediafiles[index].data),
+                      fit: BoxFit.cover,
+                    ),
                   );
                 },
               ),
             ),
             const SizedBox(height: 20),
-            AudioWidget(audio: widget.pois[_currentPoiIndex].audioDescription),
+            AudioWidget(
+              key: ValueKey(widget.pois[_currentPoiIndex].audioDescription),
+              audio: widget.pois[_currentPoiIndex].audioDescription,
+            ),
             const SizedBox(height: 20),
             SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0)
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Align(
