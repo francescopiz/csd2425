@@ -20,13 +20,11 @@ class _DebugScreenState extends State<DebugScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Debug screen',
+        title: const Text('Debug screen',
             style: TextStyle(
-              color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
             ),
         ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: Center(
         child: Padding(
@@ -47,6 +45,10 @@ class _DebugScreenState extends State<DebugScreen> {
                     BlocProvider.of<TourBloc>(context).add(LoadTours());
                   }
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange,
+                  foregroundColor: Colors.black,
+                ),
                 child: const Text('Save URL'),
               ),
             ],

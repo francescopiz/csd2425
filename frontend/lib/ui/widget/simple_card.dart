@@ -24,10 +24,11 @@ class _SimpleCardState extends State<SimpleCard> {
       child: SizedBox(
         width: double.infinity,
         child: Card(
+          color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
-            side: BorderSide(
-              color: Theme.of(context).primaryColor,
+            side: const BorderSide(
+              color: Colors.orange,
               width: 2.0,
             ),
           ),
@@ -48,19 +49,17 @@ class _SimpleCardState extends State<SimpleCard> {
                     if (widget.subtitle != '')
                       Text(
                         widget.subtitle,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14.0,
                           fontStyle: FontStyle.italic,
-                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                   ],
                 ),
                 const Spacer(),
-                Icon(
+                const Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 20.0,
-                  color: Theme.of(context).primaryColor,
                 ),
               ],
             ),

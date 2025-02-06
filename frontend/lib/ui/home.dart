@@ -31,14 +31,13 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Seleziona il tuo tour',
             style: TextStyle(
-              color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
+              color: Colors.orange
             ),
           ),
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         ),
         body: BlocBuilder<TourBloc, TourState>(
           bloc: _tourBloc,
@@ -74,7 +73,7 @@ class _HomeState extends State<Home> {
                         },
                         child: SimpleCard(
                           title: tour.name,
-                          subtitle: tour.description,
+                          subtitle: tour.description
                         ),
                       );
                     },

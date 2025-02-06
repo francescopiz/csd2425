@@ -36,6 +36,8 @@ class CustomBottomBarWidgetState extends State<CustomBottomBarWidget> {
             children: _actualScreens,
           ),
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.white,
+            selectedItemColor: Colors.orange,
             currentIndex: _selectedIndex.value,
             onTap: _onItemTapped,
             items: const <BottomNavigationBarItem>[
