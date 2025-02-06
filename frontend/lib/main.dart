@@ -7,9 +7,11 @@ import 'landsight.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   var services = await Services.initialize();
 
   setPreferredOrientation();
+
 
   initializeDateFormatting('it_IT', '').then((_) => runApp(ServicesProvider(services: services, child: const Landsight())));
 }

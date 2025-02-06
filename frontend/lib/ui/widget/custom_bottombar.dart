@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/ui/ar_camera.dart';
-import 'package:frontend/ui/ar_screen.dart';
 import 'package:frontend/ui/ar_test.dart';
 import 'package:frontend/ui/debug_screen.dart';
 import 'package:frontend/ui/home.dart';
@@ -42,7 +40,8 @@ class CustomBottomBarWidgetState extends State<CustomBottomBarWidget> {
             onTap: _onItemTapped,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.camera_alt),
+                icon: Icon(Icons.camera_alt,
+                color: Colors.orange),
                 label: 'Fotocamera',
               ),
               BottomNavigationBarItem(

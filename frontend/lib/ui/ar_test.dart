@@ -31,33 +31,53 @@ class ArTestState extends State<ArTest> {
 
   Future<void> displayShape(ArCoreController controller, String shapeType) async {
     try {
-      final ByteData textureBytes = await rootBundle.load("assets/earth_map.jpg");
-      final materials = ArCoreMaterial(
-        color: Colors.blue,
-        textureBytes: textureBytes.buffer.asUint8List(),
-      );
-
       ArCoreNode node;
-      switch (shapeType) {
-        case 'sphere':
-          final sphere = ArCoreSphere(materials: [materials]);
-          node = ArCoreNode(
-            shape: sphere,
-            position: vector64.Vector3(0, 0, -1.5),
-          );
-          break;
-        case 'cube':
-          final cube = ArCoreCube(
-            materials: [materials],
-            size: vector64.Vector3(0.2, 0.2, 0.2),
-          );
-          node = ArCoreNode(
-            shape: cube,
-            position: vector64.Vector3(0.5, 0, -1.5),
-          );
-          break;
-        default:
-          return;
+
+      // In base al valore di "shapeType" carichiamo il file di immagine appropriato
+      if (shapeType == 'moon') {
+        // Carica un'immagine locale (modifica il path in base alle tue risorse)
+        final ByteData textureBytes = await rootBundle.load("assets/moon.jpg");
+        final material = ArCoreMaterial(
+          color: Colors.black,
+          textureBytes: textureBytes.buffer.asUint8List(),
+        );
+        // Creiamo una "plane" utilizzando un cubo molto sottile
+        final imagePlane = ArCoreCube(
+          materials: [material],
+          size: vector64.Vector3(1, 1, 0.1), // Dimensioni: larghezza, altezza, profondità minima
+        );
+        node = ArCoreNode(
+          shape: imagePlane,
+          position: vector64.Vector3(0, 0, -2),
+        );
+      } else if (shapeType == 'sphere') {
+        final ByteData textureBytes = await rootBundle.load("assets/earth_map.jpg");
+        final material = ArCoreMaterial(
+          color: Colors.blue,
+          textureBytes: textureBytes.buffer.asUint8List(),
+        );
+        final sphere = ArCoreSphere(materials: [material]);
+        node = ArCoreNode(
+          shape: sphere,
+          position: vector64.Vector3(0, 0, -1.5),
+        );
+      } else if (shapeType == 'cube') {
+        final ByteData textureBytes = await rootBundle.load("assets/moon.jpg");
+        final material = ArCoreMaterial(
+          color: Colors.black,
+          textureBytes: textureBytes.buffer.asUint8List(),
+        );
+        final cube = ArCoreCube(
+          materials: [material],
+          size: vector64.Vector3(0.2, 0.2, 0.2),
+        );
+        node = ArCoreNode(
+          shape: cube,
+          position: vector64.Vector3(0.5, 0, -1.5),
+        );
+      } else {
+        // Se il valore non corrisponde a nessuna opzione, non fare nulla
+        return;
       }
 
       controller.addArCoreNode(node);
